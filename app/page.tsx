@@ -23,47 +23,10 @@ import {
   Zap,
   ChevronDown,
   Menu,
-  X, Twitter, Globe,
+  X,
+  Twitter,
 } from 'lucide-react'
 import Image from 'next/image'
-
-// Google Scholar Icon Component
-function GoogleScholarIcon({ className }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 24 24"
-      fill="none"
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M12 24C7.58172 24 4 20.4183 4 16C4 14.2019 4.6 12.4 5.7 10.9L12 18L18.3 10.9C19.4 12.4 20 14.2019 20 16C20 20.4183 16.4183 24 12 24Z"
-        fill="#4285F4"
-      />
-      <path
-        d="M5.7 10.9C4.6 12.4 4 14.2019 4 16C4 16.7 4.1 17.4 4.3 18L12 18L5.7 10.9Z"
-        fill="#34A853"
-      />
-      <path
-        d="M12 18L18.3 10.9C19.4 12.4 20 14.2019 20 16C20 16.7 19.9 17.4 19.7 18L12 18Z"
-        fill="#FBBC05"
-      />
-      <path
-        d="M12 2C8.5 2 5.4 3.6 3.4 6.1L12 16L20.6 6.1C18.6 3.6 15.5 2 12 2Z"
-        fill="#EA4335"
-      />
-      <path
-        d="M5.7 10.9L12 18L18.3 10.9C15.9 7.7 12 6.5 12 6.5C12 6.5 8.1 7.7 5.7 10.9Z"
-        fill="white"
-      />
-      <path
-        d="M12 6.5V16M3.4 6.1L12 16L20.6 6.1M5.7 10.9L12 18L18.3 10.9"
-        stroke="#555555"
-        strokeWidth="0.5"
-      />
-    </svg>
-  )
-}
 
 const navItems = [
   { name: 'Profile', icon: User, href: '#profile' },
@@ -246,12 +209,13 @@ const communications = [
   },
 ]
 
-const skills = [
-  { category: 'Machine Learning', items: ['Deep Learning', 'Computer Vision', 'NLP', 'Reinforcement Learning'], icon: Brain },
-  { category: 'Programming', items: ['Python', 'PyTorch', 'TensorFlow', 'C++', 'CUDA'], icon: Code },
-  { category: 'Research Areas', items: ['Interpretable AI', 'Federated Learning', 'Self-Supervised Learning', 'Graph Neural Networks'], icon: Cpu },
-  { category: 'Tools & Frameworks', items: ['Docker', 'Kubernetes', 'Git', 'CI/CD', 'Cloud Computing'], icon: Zap },
-]
+// Skills - Temporarily Commented Out
+// const skills = [
+//   { category: 'Machine Learning', items: ['Deep Learning', 'Computer Vision', 'NLP', 'Reinforcement Learning'], icon: Brain },
+//   { category: 'Programming', items: ['Python', 'PyTorch', 'TensorFlow', 'C++', 'CUDA'], icon: Code },
+//   { category: 'Research Areas', items: ['Interpretable AI', 'Federated Learning', 'Self-Supervised Learning', 'Graph Neural Networks'], icon: Cpu },
+//   { category: 'Tools & Frameworks', items: ['Docker', 'Kubernetes', 'Git', 'CI/CD', 'Cloud Computing'], icon: Zap },
+// ]
 
 function useScrollSpy() {
   const [activeSection, setActiveSection] = useState('profile')
@@ -372,158 +336,184 @@ function Navbar({ activeSection }: { activeSection: string }) {
   )
 }
 
-// Tooltip component for social icons
-function SocialTooltip({ href, label, children }: { href: string; label: string; children: React.ReactNode }) {
-  const [isHovered, setIsHovered] = useState(false)
-
-  return (
-    <div
-      className="relative flex flex-col items-center"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={label}
-        className="w-14 h-14 rounded-full bg-white/90 dark:bg-slate-800/90 shadow-lg flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-primary-500 hover:text-white transition-all duration-300 hover:scale-110 relative z-20"
-      >
-        {children}
-      </a>
-      <AnimatePresence>
-        {isHovered && (
-          <motion.div
-            initial={{ opacity: 0, y: -5 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -5 }}
-            transition={{ duration: 0.2 }}
-            className="absolute top-full mt-2 px-4 py-2 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 text-sm rounded-lg shadow-xl whitespace-nowrap z-30"
-          >
-            {href}
-            {/* Arrow - positioned so tip points exactly to icon center */}
-            <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[5px] border-r-[5px] border-b-[5px] border-l-transparent border-r-transparent border-b-slate-900 dark:border-b-slate-100" />
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </div>
-  )
-}
-
+// Hero Section with Background Image Carousel - Premium Redesign
 function Hero() {
+  const [currentIndex, setCurrentIndex] = useState(0)
+
+  // Background images - Update these paths with your actual images
+  const backgroundImages = [
+    {
+      url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&q=80',
+      title: 'AI Research Lab'
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1920&q=80',
+      title: 'Neural Networks'
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1920&q=80',
+      title: 'Technology'
+    },
+    {
+      url: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=80',
+      title: 'Innovation'
+    }
+  ]
+
+  // Auto-rotate images every 6 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prev) => (prev + 1) % backgroundImages.length)
+    }, 6000)
+    return () => clearInterval(interval)
+  }, [backgroundImages.length])
+
+  const goToSlide = (index: number) => {
+    setCurrentIndex(index)
+  }
+
+  const goToPrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + backgroundImages.length) % backgroundImages.length)
+  }
+
+  const goToNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % backgroundImages.length)
+  }
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated background */}
-      <div className="absolute inset-0 bg-gradient-to-br from-primary-50 via-accent-50 to-primary-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950" />
-
-      {/* Gradient orbs */}
-      <motion.div
-        animate={{
-          scale: [1, 1.2, 1],
-          rotate: [0, 90, 0],
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-        className="absolute top-20 -left-20 w-96 h-96 bg-gradient-to-br from-primary-400/30 to-accent-400/30 rounded-full blur-3xl"
-      />
-      <motion.div
-        animate={{
-          scale: [1.2, 1, 1.2],
-          rotate: [90, 0, 90],
-        }}
-        transition={{ duration: 15, repeat: Infinity, ease: 'linear' }}
-        className="absolute bottom-20 -right-20 w-96 h-96 bg-gradient-to-br from-accent-400/30 to-primary-400/30 rounded-full blur-3xl"
-      />
-
-      {/* Particles */}
-      <div className="particles">
-        {[...Array(20)].map((_, i) => (
+      {/* Background Image Carousel */}
+      <div className="absolute inset-0">
+        {backgroundImages.map((image, index) => (
           <motion.div
-            key={i}
-            className="particle"
-            initial={{
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
-              y: (typeof window !== 'undefined' ? window.innerHeight : 1000) + 100,
-            }}
+            key={index}
+            initial={false}
             animate={{
-              y: -100,
-              x: Math.random() * (typeof window !== 'undefined' ? window.innerWidth : 1000),
+              opacity: index === currentIndex ? 1 : 0,
+              scale: index === currentIndex ? 1 : 1.1,
             }}
-            transition={{
-              duration: 10 + Math.random() * 20,
-              repeat: Infinity,
-              delay: Math.random() * 10,
-              ease: 'linear',
-            }}
-            style={{
-              left: `${Math.random() * 100}%`,
-            }}
-          />
+            transition={{ duration: 1.2, ease: [0.25, 0.1, 0.25, 1] }}
+            className="absolute inset-0"
+          >
+            <Image
+              src={image.url}
+              alt={image.title}
+              fill
+              className="object-cover"
+              priority={index === 0}
+              sizes="100vw"
+            />
+            {/* Multi-layer gradient overlay for depth */}
+            <div className="absolute inset-0 bg-gradient-to-br from-slate-950/85 via-slate-900/70 to-indigo-950/85" />
+            {/* Radial vignette */}
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(0,0,0,0.3)_100%)]" />
+          </motion.div>
         ))}
       </div>
 
-      {/* Content */}
-      <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Decorative animated gradient orb */}
+      <motion.div
+        animate={{
+          scale: [1, 1.3, 1],
+          rotate: [0, 180, 360],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+        className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-amber-500/20 via-purple-500/20 to-cyan-500/20 rounded-full blur-3xl"
+      />
+
+      {/* Noise texture overlay for premium feel */}
+      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
+        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
+      }} />
+
+      {/* Main Content */}
+      <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
         >
+          {/* Avatar */}
           <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: 'spring', stiffness: 200 }}
-            className="w-40 h-40 mx-auto mb-8 rounded-full bg-gradient-to-br from-primary-400 via-accent-400 to-primary-600 p-1 shadow-2xl"
+            initial={{ scale: 0, rotate: -180 }}
+            animate={{ scale: 1, rotate: 0 }}
+            transition={{ delay: 0.2, type: 'spring', stiffness: 150, damping: 20 }}
+            className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-8"
           >
-            <div className="w-full h-full rounded-full bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-800 dark:to-slate-900 flex items-center justify-center">
-              <User className="w-20 h-20 text-primary-500" />
+            {/* Animated ring */}
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+              className="absolute inset-0 rounded-full p-1"
+            >
+              <div className="w-full h-full rounded-full bg-gradient-to-r from-amber-400 via-purple-400 to-cyan-400" />
+            </motion.div>
+
+            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-slate-100 to-slate-300 dark:from-slate-700 dark:to-slate-900 flex items-center justify-center shadow-xl">
+              <User className="w-16 h-16 sm:w-20 sm:h-20 text-slate-600 dark:text-slate-300" />
             </div>
           </motion.div>
 
+          {/* Name */}
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6"
+            transition={{ delay: 0.4, duration: 0.6 }}
+            className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 tracking-tight"
           >
-            <span className="text-gradient">Dr. Your Name</span>
+            <span className="text-white drop-shadow-lg">Dr. Your Name</span>
           </motion.h1>
 
+          {/* Title */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4 }}
-            className="text-xl sm:text-2xl text-slate-600 dark:text-slate-300 mb-4"
+            transition={{ delay: 0.5, duration: 0.6 }}
+            className="text-base sm:text-lg text-slate-200 mb-2 tracking-wide font-medium"
           >
-            Assistant Professor | Machine Learning Researcher
+            Assistant Professor
+            <span className="mx-2 text-slate-500">•</span>
+            Machine Learning Researcher
           </motion.p>
 
+          {/* Institution */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="text-lg text-slate-500 dark:text-slate-400 mb-8 max-w-2xl mx-auto"
+            transition={{ delay: 0.55, duration: 0.6 }}
+            className="text-sm sm:text-base text-slate-300 mb-8 tracking-wide"
           >
-            Department of Computer Science, University of Technology
+            Department of Computer Science
+            <span className="mx-2 text-slate-500">|</span>
+            University of Technology
           </motion.p>
 
+          {/* CTA Buttons */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.6, duration: 0.6 }}
             className="flex flex-wrap items-center justify-center gap-4 mb-10"
           >
             <a
               href="#publications"
-              className="px-8 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 flex items-center gap-2"
+              className="group relative px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-semibold shadow-lg shadow-amber-500/25 hover:shadow-xl hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden"
             >
-              <BookOpen className="w-5 h-5" />
-              View Publications
+              <span className="relative z-10 flex items-center gap-2">
+                <BookOpen className="w-4 h-4" />
+                View Publications
+              </span>
+              {/* Button shine effect */}
+              <motion.div
+                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
+              />
             </a>
             <a
               href="mailto:your.email@university.edu"
-              className="px-8 py-3 border-2 border-slate-300 dark:border-slate-600 rounded-full font-medium hover:border-primary-500 hover:text-primary-500 transition-all duration-300 flex items-center gap-2"
+              className="px-6 py-3 bg-white/10 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/20 hover:border-white/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2"
             >
-              <Mail className="w-5 h-5" />
+              <Mail className="w-4 h-4" />
               Contact Me
             </a>
           </motion.div>
@@ -532,34 +522,149 @@ function Hero() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="flex items-center justify-center gap-6"
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="inline-flex items-center gap-5"
           >
-            {socialLinks.map((social) => (
-              <SocialTooltip key={social.label} href={social.href} label={social.label}>
-                <social.icon className="w-6 h-6" />
-              </SocialTooltip>
-            ))}
+            {socialLinks.map((social, index) => {
+              const [isHovered, setIsHovered] = useState(false)
+              const [isTooltipHovered, setIsTooltipHovered] = useState(false)
+              return (
+                <div
+                  key={social.label}
+                  className="relative"
+                  onMouseEnter={() => setIsHovered(true)}
+                  onMouseLeave={() => {
+                    setIsHovered(false)
+                    setIsTooltipHovered(false)
+                  }}
+                >
+                  <motion.a
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ delay: 0.7 + index * 0.05, duration: 0.4 }}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 hover:border-white/30 text-white/80 hover:text-white transition-all duration-300"
+                  >
+                    <social.icon className="w-5 h-5" />
+                  </motion.a>
+
+                  {/* Tooltip - positioned closer to icon */}
+                  {(isHovered || isTooltipHovered) && (
+                    <div
+                      className="absolute left-1/2 -translate-x-1/2 top-full mt-1.5 z-30"
+                      onMouseEnter={() => setIsTooltipHovered(true)}
+                      onMouseLeave={() => setIsTooltipHovered(false)}
+                    >
+                      {/* Tooltip content - selectable */}
+                      <div className="relative px-2.5 py-1 bg-slate-900 dark:bg-slate-800 text-white text-[10px] sm:text-xs rounded shadow-lg whitespace-nowrap select-text cursor-text">
+                        {social.href}
+                        {/* Arrow - tip points exactly to icon center */}
+                        <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-0 h-0 border-l-[4px] border-r-[4px] border-b-[4px] border-l-transparent border-r-transparent border-b-slate-900 dark:border-b-slate-800" />
+                      </div>
+                    </div>
+                  )}
+                </div>
+              )
+            })}
           </motion.div>
         </motion.div>
       </div>
 
-      {/* Scroll indicator */}
+      {/* Image Thumbnails - Bottom Right - Redesigned */}
+      <div className="absolute bottom-6 right-4 sm:bottom-8 sm:right-8 z-20">
+        <div className="flex flex-col gap-2 items-end">
+          {/* Navigation arrows */}
+          <div className="flex gap-1 p-1 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+            <button
+              onClick={goToPrev}
+              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-300 flex items-center justify-center"
+              aria-label="Previous image"
+            >
+              <ChevronRight className="w-4 h-4 rotate-180" />
+            </button>
+            <button
+              onClick={goToNext}
+              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-300 flex items-center justify-center"
+              aria-label="Next image"
+            >
+              <ChevronRight className="w-4 h-4" />
+            </button>
+          </div>
+
+          {/* Thumbnails - aligned with arrows width */}
+          <div className="flex flex-col gap-1.5">
+            {backgroundImages.map((image, index) => (
+              <button
+                key={index}
+                onClick={() => goToSlide(index)}
+                className={`relative w-20 h-12 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
+                  index === currentIndex
+                    ? 'border-amber-400 scale-105 shadow-lg shadow-amber-400/30'
+                    : 'border-white/20 opacity-50 hover:opacity-80 hover:border-white/40'
+                }`}
+                aria-label={`Go to slide ${index + 1}: ${image.title}`}
+              >
+                <Image
+                  src={image.url}
+                  alt={image.title}
+                  fill
+                  className="object-cover"
+                  sizes="80px"
+                />
+                {/* Active indicator */}
+                {index === currentIndex && (
+                  <motion.div
+                    layoutId="activeIndicator"
+                    className="absolute inset-0 bg-amber-400/20"
+                    transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+                  />
+                )}
+                {/* Slide number */}
+                <div className="absolute bottom-1 left-1 px-1.5 py-0.5 bg-black/60 backdrop-blur-sm rounded text-white text-[10px] font-medium">
+                  {index + 1}
+                </div>
+              </button>
+            ))}
+          </div>
+
+          {/* Progress bar */}
+          <div className="w-20 h-0.5 bg-white/20 rounded-full overflow-hidden">
+            <motion.div
+              className="h-full bg-gradient-to-r from-amber-400 to-orange-400"
+              initial={{ width: '0%' }}
+              animate={{ width: '100%' }}
+              transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
+              key={currentIndex}
+            />
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator - Bottom Left */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1, duration: 1 }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2"
+        className="absolute bottom-8 left-8 z-20"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-slate-400"
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity }}
+          className="flex flex-col items-center gap-2 text-white/50"
         >
-          <span className="text-sm">Scroll to explore</span>
-          <ChevronDown className="w-6 h-6" />
+          <span className="text-xs tracking-widest uppercase">Scroll</span>
+          <ChevronDown className="w-5 h-5" />
         </motion.div>
       </motion.div>
+
+      {/* Decorative corner elements */}
+      <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10" />
+      <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10" />
     </section>
   )
 }
