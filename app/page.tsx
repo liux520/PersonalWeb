@@ -68,8 +68,20 @@ const news = [
     date: 'October 2024',
     title: 'New research grant awarded',
     description: 'Secured funding for research on interpretable machine learning systems.',
-    type: 'grant',
+    type: 'publication',
   },
+  {
+    date: 'October 2024',
+    title: 'New research grant awarded',
+    description: 'Secured funding for research on interpretable machine learning systems.',
+    type: 'talk',
+  },
+  {
+    date: 'October 2024',
+    title: 'New research grant awarded',
+    description: 'Secured funding for research on interpretable machine learning systems.',
+    type: 'grant',
+  }
 ]
 
 interface Publication {
@@ -343,20 +355,36 @@ function Hero() {
   // Background images - Update these paths with your actual images
   const backgroundImages = [
     {
+      url: '/images/scu-1.jpg',
+      title: 'Campus'
+    },
+    {
+      url: '/images/scu-4.jpg',
+      title: 'Campus'
+    },
+    {
+      url: '/images/scu-2.jpg',
+      title: 'Campus'
+    },
+    {
+      url: '/images/scu-3.jpg',
+      title: 'Campus'
+    },
+    {
+      url: '/images/my-1.jpg',
+      title: 'Campus'
+    },
+    {
+      url: '/images/my-2.jpg',
+      title: 'Campus'
+    },
+    {
+      url: '/images/my-3.jpg',
+      title: 'Campus'
+    },
+    {
       url: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1920&q=80',
       title: 'AI Research Lab'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=1920&q=80',
-      title: 'Neural Networks'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=1920&q=80',
-      title: 'Technology'
-    },
-    {
-      url: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1920&q=80',
-      title: 'Innovation'
     }
   ]
 
@@ -496,7 +524,8 @@ function Hero() {
             transition={{ delay: 0.6, duration: 0.6 }}
             className="flex flex-wrap items-center justify-center gap-4 mb-10"
           >
-            <a
+            {/* View Publications Button - Commented Out */}
+            {/* <a
               href="#publications"
               className="group relative px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-xl font-semibold shadow-lg shadow-amber-500/25 hover:shadow-xl hover:shadow-amber-500/40 hover:-translate-y-0.5 transition-all duration-300 overflow-hidden"
             >
@@ -504,18 +533,15 @@ function Hero() {
                 <BookOpen className="w-4 h-4" />
                 View Publications
               </span>
-              {/* Button shine effect */}
-              <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700"
-              />
-            </a>
-            <a
+            </a> */}
+            {/* Contact Me Button - Commented Out */}
+            {/* <a
               href="mailto:your.email@university.edu"
               className="px-6 py-3 bg-white/10 border-2 border-white/30 text-white rounded-xl font-semibold hover:bg-white/20 hover:border-white/50 hover:-translate-y-0.5 transition-all duration-300 flex items-center gap-2"
             >
               <Mail className="w-4 h-4" />
               Contact Me
-            </a>
+            </a> */}
           </motion.div>
 
           {/* Social Icons with Tooltips */}
@@ -797,7 +823,8 @@ function News() {
             <h2 className="text-4xl font-bold text-gradient">Latest News</h2>
           </div>
 
-          <div className="space-y-6">
+          {/* Scrollable news container */}
+          <div className="max-h-[400px] overflow-y-auto pr-2 space-y-4 scrollbar-thin scrollbar-thumb-slate-300 dark:scrollbar-thumb-slate-600 scrollbar-track-transparent">
             {news.map((item, index) => (
               <motion.div
                 key={index}
@@ -805,18 +832,18 @@ function News() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/80 dark:bg-slate-800/60 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+                className="bg-white/80 dark:bg-slate-800/60 backdrop-blur-sm rounded-xl p-4 shadow-md hover:shadow-lg transition-all duration-300 relative overflow-hidden group"
               >
-                <div className={`absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b ${getTypeStyles(item.type)}`} />
-                <div className="flex items-start gap-4">
-                  <div className={`flex-shrink-0 px-4 py-2 rounded-xl bg-gradient-to-br ${getTypeStyles(item.type)} text-white text-sm font-semibold`}>
+                <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${getTypeStyles(item.type)}`} />
+                <div className="flex items-start gap-3">
+                  <div className={`flex-shrink-0 px-3 py-1.5 rounded-lg bg-gradient-to-br ${getTypeStyles(item.type)} text-white text-xs font-semibold`}>
                     {item.date}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-slate-800 dark:text-slate-200 mb-2 group-hover:text-primary-500 transition-colors">
+                    <h3 className="text-base font-semibold text-slate-800 dark:text-slate-200 mb-1 group-hover:text-primary-500 transition-colors">
                       {item.title}
                     </h3>
-                    <p className="text-slate-600 dark:text-slate-400">
+                    <p className="text-sm text-slate-600 dark:text-slate-400">
                       {item.description}
                     </p>
                   </div>
@@ -832,11 +859,12 @@ function News() {
             className="mt-8 text-center"
           >
             <a
-              href="#"
-              className="inline-flex items-center gap-2 text-primary-500 hover:text-primary-600 font-medium transition-colors"
+              href="/news"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
+              <Newspaper className="w-5 h-5" />
               View all news
-              <ChevronRight className="w-4 h-4" />
+              <ExternalLink className="w-4 h-4" />
             </a>
           </motion.div>
         </motion.div>
@@ -987,7 +1015,7 @@ function Publications() {
             className="mt-8 text-center"
           >
             <a
-              href="#"
+              href="/publications"
               className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <BookOpen className="w-5 h-5" />
@@ -1051,6 +1079,22 @@ function Honors() {
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-8 text-center"
+          >
+            <a
+              href="/honors"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            >
+              <Award className="w-5 h-5" />
+              View More Honors & Awards
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -1199,6 +1243,22 @@ function Communications() {
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="mt-8 text-center"
+          >
+            <a
+              href="/service"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+            >
+              <Users className="w-5 h-5" />
+              View More Academic Service & Communications
+              <ExternalLink className="w-4 h-4" />
+            </a>
+          </motion.div>
         </motion.div>
       </div>
     </section>
@@ -1244,6 +1304,7 @@ function Footer() {
   )
 }
 
+// Home page component
 export default function Home() {
   const activeSection = useScrollSpy()
 
@@ -1255,8 +1316,8 @@ export default function Home() {
       <News />
       <Publications />
       <Honors />
-      <Education />
       <Communications />
+      <Education />
       <Footer />
     </main>
   )
