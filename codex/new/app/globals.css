@@ -1,0 +1,216 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-bg: #f9f9f6;
+    --color-surface: #ffffff;
+    --color-text: #121212;
+    --color-text-muted: #4b4b4b;
+    --color-border: #e2e2dc;
+    --color-primary: #1f2a44;
+    --color-accent: #7a1f2b;
+    --color-link: #1f2a44;
+    --color-on-primary: #ffffff;
+    --content-max: 1120px;
+    --reading-max: 720px;
+  }
+
+  .dark {
+    --color-bg: #0f1113;
+    --color-surface: #14171a;
+    --color-text: #f2f2ee;
+    --color-text-muted: #b7b7ad;
+    --color-border: #2a2e33;
+    --color-primary: #d7dee8;
+    --color-accent: #d0727b;
+    --color-link: #d7dee8;
+    --color-on-primary: #0f1113;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.7;
+    letter-spacing: 0.01em;
+    min-height: 100vh;
+    background-image:
+      linear-gradient(0deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+    background-size: 36px 36px;
+    background-position: center top;
+  }
+
+  .dark body {
+    background-image:
+      linear-gradient(0deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-text);
+    letter-spacing: -0.01em;
+  }
+
+  a {
+    color: var(--color-link);
+    text-decoration-color: currentColor;
+    text-underline-offset: 4px;
+  }
+
+  a:hover {
+    color: var(--color-accent);
+  }
+
+  ::selection {
+    background-color: rgba(122, 31, 43, 0.2);
+    color: var(--color-text);
+  }
+}
+
+@layer components {
+  .page-shell {
+    min-height: 100vh;
+    background: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  .content-wrap {
+    width: 100%;
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  .reading-wrap {
+    max-width: var(--reading-max);
+  }
+
+  .section {
+    padding: 72px 0;
+  }
+
+  .section-tight {
+    padding: 48px 0;
+  }
+
+  .eyebrow {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    color: var(--color-text-muted);
+  }
+
+  .section-title {
+    font-size: clamp(1.6rem, 1.1rem + 1.8vw, 2.4rem);
+    line-height: 1.2;
+  }
+
+  .lead {
+    font-size: 1.05rem;
+    line-height: 1.75;
+    color: var(--color-text-muted);
+  }
+
+  .rule {
+    border-top: 1px solid var(--color-border);
+    margin: 24px 0;
+  }
+
+  .card {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 14px;
+    padding: 20px;
+  }
+
+  .tag {
+    display: inline-flex;
+    align-items: center;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    border: 1px solid var(--color-border);
+    color: var(--color-text-muted);
+    background: var(--color-bg);
+    white-space: nowrap;
+  }
+
+  .tag-accent {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: 999px;
+    padding: 8px 16px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text);
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .btn-primary {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-on-primary);
+  }
+
+  .btn-ghost {
+    background: transparent;
+    color: var(--color-text);
+  }
+
+  .meta {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+  }
+
+  .list-item {
+    padding: 16px 0;
+    border-top: 1px solid var(--color-border);
+  }
+
+  .list-item:first-child {
+    border-top: none;
+  }
+
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .nav-link {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    font-weight: 500;
+  }
+
+  .nav-link:hover {
+    color: var(--color-text);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}

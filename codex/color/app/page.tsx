@@ -39,10 +39,10 @@ const navItems = [
 
 // Social media links configuration
 const socialLinks = [
-  { icon: Github, href: 'https://github.com/liux520', label: 'GitHub', color: 'hover:bg-gray-800' },
-  { icon: GraduationCap, href: 'https://scholar.google.com/citations?user=p6UJEDkAAAAJ&hl=zh-CN', label: 'Google Scholar', color: 'hover:bg-blue-600' },
+  { icon: Github, href: 'https://github.com/yourusername', label: 'GitHub', color: 'hover:bg-gray-800' },
+  { icon: GraduationCap, href: 'https://scholar.google.com/yourid', label: 'Google Scholar', color: 'hover:bg-blue-600' },
   { icon: Twitter, href: 'https://x.com/yourusername', label: 'X (Twitter)', color: 'hover:bg-black' },
-  { icon: Mail, href: 'mailto:liuxmail1220@gmail.com', label: 'Email', color: 'hover:bg-primary-500' },
+  { icon: Mail, href: 'mailto:your.email@university.edu', label: 'Email', color: 'hover:bg-teal-600' },
 ]
 
 const news = [
@@ -272,7 +272,7 @@ function Navbar({ activeSection }: { activeSection: string }) {
         initial={{ y: -100 }}
         animate={{ y: 0 }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? 'glass shadow-lg py-3' : 'bg-transparent py-5'
+          isScrolled ? 'surface-elevated py-3' : 'bg-transparent py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -283,7 +283,7 @@ function Navbar({ activeSection }: { activeSection: string }) {
               whileHover={{ scale: 1.05 }}
             >
               <span className="flex items-center gap-2">
-                <Sparkles className="w-6 h-6 text-primary-500" />
+                <Sparkles className="w-6 h-6 text-teal-500" />
                 Research Portfolio
               </span>
             </motion.a>
@@ -296,7 +296,7 @@ function Navbar({ activeSection }: { activeSection: string }) {
                   href={item.href}
                   className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 flex items-center gap-2 ${
                     activeSection === item.href.slice(1)
-                      ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-lg'
+                      ? 'bg-gradient-to-r from-teal-600 to-amber-500 text-white shadow-lg'
                       : 'text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
                   }`}
                 >
@@ -323,7 +323,7 @@ function Navbar({ activeSection }: { activeSection: string }) {
           initial={{ opacity: 0, x: '100%' }}
           animate={{ opacity: 1, x: 0 }}
           exit={{ opacity: 0, x: '100%' }}
-          className="fixed inset-0 z-40 lg:hidden glass"
+          className="fixed inset-0 z-40 lg:hidden surface"
         >
           <div className="flex flex-col items-center justify-center h-full gap-4">
             {navItems.map((item) => (
@@ -333,7 +333,7 @@ function Navbar({ activeSection }: { activeSection: string }) {
                 onClick={() => setIsMenuOpen(false)}
                 className={`px-6 py-3 rounded-full text-lg font-medium flex items-center gap-3 ${
                   activeSection === item.href.slice(1)
-                    ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white'
+                    ? 'bg-gradient-to-r from-teal-600 to-amber-500 text-white'
                     : 'text-slate-700 dark:text-slate-300'
                 }`}
               >
@@ -427,33 +427,13 @@ function Hero() {
               src={image.url}
               alt={image.title}
               fill
-              className="object-cover"
+              className="object-cover brightness-[0.55] contrast-110 saturate-90"
               priority={index === 0}
               sizes="100vw"
             />
-            {/* Multi-layer gradient overlay for depth - refined indigo tones */}
-            <div className="absolute inset-0 bg-gradient-to-br from-slate-950/90 via-primary-950/75 to-slate-950/90" />
-            {/* Radial vignette with indigo tint */}
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(30,27,75,0.4)_100%)]" />
           </motion.div>
         ))}
       </div>
-
-      {/* Decorative animated gradient orb - Deep Indigo palette */}
-      <motion.div
-        animate={{
-          scale: [1, 1.3, 1],
-          rotate: [0, 180, 360],
-          opacity: [0.3, 0.5, 0.3],
-        }}
-        transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
-        className="absolute -top-40 -right-40 w-[600px] h-[600px] bg-gradient-to-br from-primary-500/20 via-accent-500/20 to-primary-600/20 rounded-full blur-3xl"
-      />
-
-      {/* Noise texture overlay for premium feel */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none" style={{
-        backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
-      }} />
 
       {/* Main Content */}
       <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
@@ -469,16 +449,16 @@ function Hero() {
             transition={{ delay: 0.2, type: 'spring', stiffness: 150, damping: 20 }}
             className="relative w-32 h-32 sm:w-40 sm:h-40 mx-auto mb-8"
           >
-            {/* Animated ring - Deep Indigo gradient */}
+            {/* Animated ring */}
             <motion.div
               animate={{ rotate: 360 }}
               transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
               className="absolute inset-0 rounded-full p-1"
             >
-              <div className="w-full h-full rounded-full bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500" />
+              <div className="w-full h-full rounded-full bg-gradient-to-r from-teal-400 via-amber-400 to-sky-400" />
             </motion.div>
 
-            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center shadow-xl">
+            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-slate-100 to-slate-300 dark:from-slate-700 dark:to-slate-900 flex items-center justify-center shadow-xl">
               <User className="w-16 h-16 sm:w-20 sm:h-20 text-slate-600 dark:text-slate-300" />
             </div>
           </motion.div>
@@ -574,7 +554,7 @@ function Hero() {
                     transition={{ delay: 0.7 + index * 0.05, duration: 0.4 }}
                     whileHover={{ scale: 1.1, y: -2 }}
                     whileTap={{ scale: 0.95 }}
-                    className="w-11 h-11 flex items-center justify-center rounded-xl bg-white/10 hover:bg-white/20 border border-white/10 hover:border-white/30 text-white/80 hover:text-white transition-all duration-300"
+                    className="w-11 h-11 flex items-center justify-center rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 hover:text-white transition-all duration-300"
                   >
                     <social.icon className="w-5 h-5" />
                   </motion.a>
@@ -605,17 +585,17 @@ function Hero() {
       <div className="absolute bottom-6 right-4 sm:bottom-8 sm:right-8 z-20">
         <div className="flex flex-col gap-2 items-end">
           {/* Navigation arrows */}
-          <div className="flex gap-1 p-1 bg-black/40 backdrop-blur-md rounded-full border border-white/10">
+          <div className="flex gap-1 p-1 bg-slate-950 rounded-full border border-slate-700">
             <button
               onClick={goToPrev}
-              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-300 flex items-center justify-center"
+              className="w-9 h-9 rounded-full bg-slate-900 hover:bg-slate-800 text-white transition-all duration-300 flex items-center justify-center"
               aria-label="Previous image"
             >
               <ChevronRight className="w-4 h-4 rotate-180" />
             </button>
             <button
               onClick={goToNext}
-              className="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white transition-all duration-300 flex items-center justify-center"
+              className="w-9 h-9 rounded-full bg-slate-900 hover:bg-slate-800 text-white transition-all duration-300 flex items-center justify-center"
               aria-label="Next image"
             >
               <ChevronRight className="w-4 h-4" />
@@ -630,8 +610,8 @@ function Hero() {
                 onClick={() => goToSlide(index)}
                 className={`relative w-20 h-12 rounded-lg overflow-hidden border-2 transition-all duration-300 ${
                   index === currentIndex
-                    ? 'border-primary-400 scale-105 shadow-lg shadow-primary-400/30'
-                    : 'border-white/20 opacity-50 hover:opacity-80 hover:border-white/40'
+                    ? 'border-amber-400 scale-105 shadow-lg'
+                    : 'border-slate-500 saturate-0 hover:saturate-100 hover:border-slate-300'
                 }`}
                 aria-label={`Go to slide ${index + 1}: ${image.title}`}
               >
@@ -646,22 +626,22 @@ function Hero() {
                 {index === currentIndex && (
                   <motion.div
                     layoutId="activeIndicator"
-                    className="absolute inset-0 bg-primary-400/30"
+                    className="absolute inset-0 border-2 border-amber-400"
                     transition={{ type: 'spring', stiffness: 300, damping: 30 }}
                   />
                 )}
                 {/* Slide number */}
-                <div className="absolute bottom-1 left-1 px-1.5 py-0.5 bg-black/60 backdrop-blur-sm rounded text-white text-[10px] font-medium">
+                <div className="absolute bottom-1 left-1 px-1.5 py-0.5 bg-slate-950 rounded text-white text-[10px] font-medium">
                   {index + 1}
                 </div>
               </button>
             ))}
           </div>
 
-          {/* Progress bar - Deep Indigo gradient */}
-          <div className="w-20 h-0.5 bg-white/20 rounded-full overflow-hidden">
+          {/* Progress bar */}
+          <div className="w-20 h-0.5 bg-slate-300 rounded-full overflow-hidden">
             <motion.div
-              className="h-full bg-gradient-to-r from-primary-400 to-accent-400"
+              className="h-full bg-gradient-to-r from-amber-400 to-orange-400"
               initial={{ width: '0%' }}
               animate={{ width: '100%' }}
               transition={{ duration: 6, repeat: Infinity, ease: 'linear' }}
@@ -681,7 +661,7 @@ function Hero() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="flex flex-col items-center gap-2 text-white/50"
+          className="flex flex-col items-center gap-2 text-slate-300"
         >
           <span className="text-xs tracking-widest uppercase">Scroll</span>
           <ChevronDown className="w-5 h-5" />
@@ -689,8 +669,8 @@ function Hero() {
       </motion.div>
 
       {/* Decorative corner elements */}
-      <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-white/10" />
-      <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-white/10" />
+      <div className="absolute top-0 left-0 w-32 h-32 border-l border-t border-slate-600" />
+      <div className="absolute bottom-0 right-0 w-32 h-32 border-r border-b border-slate-600" />
     </section>
   )
 }
@@ -706,14 +686,14 @@ function Profile() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-md">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-600 to-amber-500 flex items-center justify-center">
               <User className="w-6 h-6 text-white" />
             </div>
-            <h2 className="text-4xl font-bold text-gradient-indigo">About Me</h2>
+            <h2 className="text-4xl font-bold text-gradient">About Me</h2>
           </div>
 
-          {/* Light, clean background for About Me - refined styling */}
-          <div className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-8 shadow-card border border-slate-200/50 dark:border-slate-700/40 hover:shadow-card-lg transition-all duration-400 ease-premium">
+          {/* Light, clean background for About Me */}
+          <div className="surface-elevated rounded-3xl p-8 hover:shadow-xl transition-shadow duration-300">
             <p className="text-lg text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
               I am an Assistant Professor in the Department of Computer Science at the University of Technology.
               My research focuses on developing interpretable and robust machine learning systems,
@@ -749,7 +729,7 @@ function Profile() {
                 ].map((interest) => (
                   <span
                     key={interest}
-                    className="px-4 py-2 rounded-full bg-gradient-to-r from-primary-50 to-accent-50 dark:from-primary-950/40 dark:to-accent-950/40 text-slate-700 dark:text-slate-300 text-sm font-medium border border-primary-200/50 dark:border-primary-800/30 transition-colors duration-300 hover:border-primary-400 dark:hover:border-primary-600"
+                    className="px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-900 dark:to-indigo-900 text-slate-700 dark:text-slate-200 text-sm font-medium border border-blue-100 dark:border-blue-800"
                   >
                     {interest}
                   </span>
@@ -770,9 +750,9 @@ function Profile() {
           <h3 className="text-2xl font-bold mb-6 text-gradient">Technical Skills</h3>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {skills.map((skillGroup) => (
-              <div key={skillGroup.category} className="glass rounded-2xl p-6 shadow-lg">
+              <div key={skillGroup.category} className="surface-elevated rounded-2xl p-6 shadow-lg">
                 <div className="flex items-center gap-3 mb-4">
-                  <skillGroup.icon className="w-6 h-6 text-primary-500" />
+                  <skillGroup.icon className="w-6 h-6 text-teal-500" />
                   <h4 className="text-lg font-semibold text-slate-800 dark:text-slate-200">
                     {skillGroup.category}
                   </h4>
@@ -799,16 +779,16 @@ function Profile() {
 function News() {
   const getTypeStyles = (type: string) => {
     const styles = {
-      publication: 'from-primary-500 to-primary-600',
-      talk: 'from-accent-500 to-accent-600',
-      award: 'from-award-500 to-award-600',
-      grant: 'from-success-500 to-success-600',
+      publication: 'from-blue-500 to-cyan-500',
+      talk: 'from-purple-500 to-pink-500',
+      award: 'from-amber-500 to-orange-500',
+      grant: 'from-emerald-500 to-teal-500',
     }
     return styles[type as keyof typeof styles] || 'from-slate-500 to-slate-600'
   }
 
   return (
-    <section id="news" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-primary-50/30 dark:to-slate-900/30">
+    <section id="news" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -817,10 +797,10 @@ function News() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-md">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-600 to-amber-500 flex items-center justify-center">
               <Newspaper className="w-6 h-6 text-white" />
             </div>
-            <h2 className="text-4xl font-bold text-gradient-indigo">Latest News</h2>
+            <h2 className="text-4xl font-bold text-gradient">Latest News</h2>
           </div>
 
           {/* Scrollable news container */}
@@ -832,7 +812,7 @@ function News() {
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-xl p-4 shadow-card hover:shadow-card-lg transition-all duration-400 ease-premium relative overflow-hidden group"
+                className="surface-elevated rounded-xl p-4 hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
               >
                 <div className={`absolute left-0 top-0 bottom-0 w-1 bg-gradient-to-b ${getTypeStyles(item.type)}`} />
                 <div className="flex items-start gap-3">
@@ -840,7 +820,7 @@ function News() {
                     {item.date}
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-base font-semibold text-slate-800 dark:text-slate-200 mb-1 group-hover:text-primary-500 transition-colors">
+                    <h3 className="text-base font-semibold text-slate-800 dark:text-slate-200 mb-1 group-hover:text-teal-600 transition-colors">
                       {item.title}
                     </h3>
                     <p className="text-sm text-slate-600 dark:text-slate-400">
@@ -860,7 +840,7 @@ function News() {
           >
             <a
               href="/news"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-amber-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <Newspaper className="w-5 h-5" />
               View all news
@@ -897,10 +877,10 @@ function Publications() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-md">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-600 to-amber-500 flex items-center justify-center">
               <BookOpen className="w-6 h-6 text-white" />
             </div>
-            <h2 className="text-4xl font-bold text-gradient-indigo">Publications</h2>
+            <h2 className="text-4xl font-bold text-gradient">Publications</h2>
           </div>
 
           {/* Filter buttons */}
@@ -911,7 +891,7 @@ function Publications() {
                 onClick={() => setFilter(f)}
                 className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${
                   filter === f
-                    ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-lg'
+                    ? 'bg-gradient-to-r from-teal-600 to-amber-500 text-white shadow-lg'
                     : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:shadow-md'
                 }`}
               >
@@ -930,7 +910,7 @@ function Publications() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                   transition={{ duration: 0.3 }}
-                  className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 shadow-card hover:shadow-card-lg transition-all duration-400 ease-premium group overflow-hidden"
+                  className="surface-elevated rounded-2xl p-6 hover:shadow-xl transition-all duration-300 group overflow-hidden"
                 >
                   <div className="flex gap-6">
                     {/* Paper Image - Left Side */}
@@ -953,14 +933,14 @@ function Publications() {
                     <div className="flex-1 min-w-0">
                       {pub.award && (
                         <div className="mb-3">
-                          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-award-500 to-award-600 text-white text-xs font-semibold shadow-sm">
+                          <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-xs font-semibold">
                             <Award className="w-3 h-3" />
                             {pub.award}
                           </span>
                         </div>
                       )}
 
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-200 mb-2 group-hover:text-primary-500 transition-colors line-clamp-2">
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-200 mb-2 group-hover:text-teal-600 transition-colors line-clamp-2">
                         {pub.title}
                       </h3>
 
@@ -968,7 +948,7 @@ function Publications() {
                         {pub.authors}
                       </p>
 
-                      <p className="text-sm text-primary-600 dark:text-primary-400 font-medium mb-3">
+                      <p className="text-sm text-teal-700 dark:text-teal-300 font-medium mb-3">
                         {pub.venue} ({pub.year})
                       </p>
 
@@ -976,7 +956,7 @@ function Publications() {
                         {pub.links.pdf && (
                           <a
                             href={pub.links.pdf}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-primary-500 hover:text-white transition-all duration-300 text-xs font-medium"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-teal-600 hover:text-white transition-all duration-300 text-xs font-medium"
                           >
                             <Download className="w-3.5 h-3.5" />
                             PDF
@@ -985,7 +965,7 @@ function Publications() {
                         {pub.links.code && (
                           <a
                             href={pub.links.code}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-primary-500 hover:text-white transition-all duration-300 text-xs font-medium"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-teal-600 hover:text-white transition-all duration-300 text-xs font-medium"
                           >
                             <Code className="w-3.5 h-3.5" />
                             Code
@@ -994,7 +974,7 @@ function Publications() {
                         {pub.links.project && (
                           <a
                             href={pub.links.project}
-                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-primary-500 hover:text-white transition-all duration-300 text-xs font-medium"
+                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-teal-600 hover:text-white transition-all duration-300 text-xs font-medium"
                           >
                             <ExternalLink className="w-3.5 h-3.5" />
                             Project
@@ -1016,7 +996,7 @@ function Publications() {
           >
             <a
               href="/publications"
-              className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="inline-flex items-center gap-2 px-8 py-3 bg-gradient-to-r from-teal-600 to-amber-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <BookOpen className="w-5 h-5" />
               View All Publications
@@ -1031,7 +1011,7 @@ function Publications() {
 
 function Honors() {
   return (
-    <section id="honors" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-accent-50/30 dark:to-slate-900/30">
+    <section id="honors" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -1040,10 +1020,10 @@ function Honors() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-md">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-600 to-amber-500 flex items-center justify-center">
               <Award className="w-6 h-6 text-white" />
             </div>
-            <h2 className="text-4xl font-bold text-gradient-indigo">Honors & Awards</h2>
+            <h2 className="text-4xl font-bold text-gradient">Honors & Awards</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1054,17 +1034,17 @@ function Honors() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 shadow-card hover:shadow-card-lg transition-all duration-400 ease-premium"
+                className="surface-elevated rounded-2xl p-6 hover:shadow-xl transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-award-400 to-award-500 flex items-center justify-center shadow-md">
+                  <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-amber-400 to-orange-500 flex items-center justify-center shadow-lg">
                     <Award className="w-7 h-7 text-white" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">
                       {honor.title}
                     </h3>
-                    <p className="text-primary-600 dark:text-primary-400 font-medium text-sm mb-2">
+                    <p className="text-teal-700 dark:text-teal-300 font-medium text-sm mb-2">
                       {honor.organization}
                     </p>
                     <p className="text-slate-500 dark:text-slate-500 text-sm mb-3 flex items-center gap-2">
@@ -1088,7 +1068,7 @@ function Honors() {
           >
             <a
               href="/honors"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-award-500 to-award-600 text-white rounded-full font-medium shadow-lg hover:shadow-xl hover:-translate-y-0.5 transition-all duration-400 ease-premium"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <Award className="w-5 h-5" />
               View More Honors & Awards
@@ -1112,15 +1092,15 @@ function Education() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-md">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-600 to-amber-500 flex items-center justify-center">
               <GraduationCap className="w-6 h-6 text-white" />
             </div>
-            <h2 className="text-4xl font-bold text-gradient-indigo">Education</h2>
+            <h2 className="text-4xl font-bold text-gradient">Education</h2>
           </div>
 
           <div className="relative">
             {/* Timeline line */}
-            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary-500 via-accent-500 to-primary-500 hidden sm:block" />
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-teal-600 via-amber-500 to-teal-600 hidden sm:block" />
 
             <div className="space-y-8">
               {education.map((edu, index) => (
@@ -1133,11 +1113,11 @@ function Education() {
                   className="relative pl-0 sm:pl-20"
                 >
                   {/* Timeline dot */}
-                  <div className="absolute left-6 top-6 w-5 h-5 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 border-4 border-white dark:border-slate-900 shadow-lg hidden sm:block" />
+                  <div className="absolute left-6 top-6 w-5 h-5 rounded-full bg-gradient-to-br from-teal-600 to-amber-500 border-4 border-white dark:border-slate-900 shadow-lg hidden sm:block" />
 
-                  <div className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 shadow-card hover:shadow-card-lg transition-all duration-400 ease-premium">
+                  <div className="surface-elevated rounded-2xl p-6 hover:shadow-xl transition-all duration-300">
                     <div className="flex flex-wrap items-center gap-3 mb-3">
-                      <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-primary-500 to-accent-500 text-white text-sm font-semibold">
+                      <span className="px-4 py-1.5 rounded-full bg-gradient-to-r from-teal-600 to-amber-500 text-white text-sm font-semibold">
                         {edu.period}
                       </span>
                       <span className="text-slate-500 dark:text-slate-400 text-sm flex items-center gap-1">
@@ -1150,7 +1130,7 @@ function Education() {
                       {edu.degree}
                     </h3>
 
-                    <p className="text-primary-600 dark:text-primary-400 font-medium mb-3">
+                    <p className="text-teal-700 dark:text-teal-300 font-medium mb-3">
                       {edu.institution}
                     </p>
 
@@ -1182,7 +1162,7 @@ function Education() {
 
 function Communications() {
   return (
-    <section id="communications" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-primary-50/30 dark:to-slate-900/30">
+    <section id="communications" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-slate-50 to-white dark:from-slate-950 dark:to-slate-900">
       <div className="max-w-5xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -1191,10 +1171,10 @@ function Communications() {
           transition={{ duration: 0.6 }}
         >
           <div className="flex items-center gap-3 mb-8">
-            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-md">
+            <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-teal-600 to-amber-500 flex items-center justify-center">
               <Users className="w-6 h-6 text-white" />
             </div>
-            <h2 className="text-4xl font-bold text-gradient-indigo">Academic Service & Communications</h2>
+            <h2 className="text-4xl font-bold text-gradient">Academic Service & Communications</h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -1205,10 +1185,10 @@ function Communications() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 shadow-card hover:shadow-card-lg transition-all duration-400 ease-premium"
+                className="surface-elevated rounded-2xl p-6 hover:shadow-xl transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-primary-400 to-accent-400 flex items-center justify-center shadow-sm">
+                  <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br from-teal-600 to-amber-500 flex items-center justify-center">
                     <Users className="w-6 h-6 text-white" />
                   </div>
                   <div>
@@ -1216,7 +1196,7 @@ function Communications() {
                       {comm.role}
                     </h3>
                     {comm.venue && (
-                      <p className="text-primary-600 dark:text-primary-400 font-medium mb-1">
+                      <p className="text-teal-700 dark:text-teal-300 font-medium mb-1">
                         {comm.venue}
                       </p>
                     )}
@@ -1252,7 +1232,7 @@ function Communications() {
           >
             <a
               href="/service"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-teal-600 to-amber-500 text-white rounded-full font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
             >
               <Users className="w-5 h-5" />
               View More Academic Service & Communications
@@ -1267,7 +1247,7 @@ function Communications() {
 
 function Footer() {
   return (
-    <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-primary-950 via-slate-950 to-primary-950">
+    <footer className="py-12 px-4 sm:px-6 lg:px-8 bg-gradient-to-br from-slate-900 to-slate-950">
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
@@ -1287,7 +1267,7 @@ function Footer() {
                 href={social.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 rounded-full bg-slate-800/50 text-slate-400 hover:bg-primary-500 hover:text-white transition-all duration-300 ease-premium flex items-center justify-center hover:scale-110"
+                className="w-10 h-10 rounded-full bg-slate-800 text-slate-400 hover:bg-teal-600 hover:text-white transition-all duration-300 flex items-center justify-center"
               >
                 <social.icon className="w-5 h-5" />
               </a>
