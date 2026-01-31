@@ -1,116 +1,80 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Award, ArrowLeft, Calendar, MapPin } from 'lucide-react'
+import { Award, ArrowLeft, Calendar } from 'lucide-react'
 import Link from 'next/link'
 
 interface Honor {
   title: string
   organization: string
   year: string
-  description: string
-  category?: 'award' | 'fellowship' | 'grant' | 'service'
+  description?: string
+  category: 'award' | 'grant' | 'service'
 }
 
 const allHonors: Honor[] = [
   {
-    title: 'Outstanding Researcher Award',
-    organization: 'National Science Foundation',
+    title: 'Yanbao Scholarship',
+    organization: 'Baofeng Group Co., Ltd.',
+    year: '2025',
+    description: 'Prestigious scholarship recognizing academic excellence and research potential.',
+    category: 'award',
+  },
+  {
+    title: 'Outstanding Graduate Student',
+    organization: 'Sichuan University',
     year: '2024',
-    description: 'Recognized for exceptional contributions to the field of machine learning, particularly in interpretable AI systems.',
+    description: 'Recognized as an outstanding graduate student for exceptional academic performance.',
     category: 'award',
   },
   {
-    title: 'Best PhD Thesis Award',
-    organization: 'University Academic Committee',
-    year: '2023',
-    description: 'Awarded for doctoral dissertation on interpretable AI systems and their applications in computer vision.',
-    category: 'award',
-  },
-  {
-    title: 'Graduate Research Fellowship',
-    organization: 'Institute of Technology',
-    year: '2022',
-    description: 'Competitive fellowship supporting innovative research in artificial intelligence and machine learning.',
-    category: 'fellowship',
-  },
-  {
-    title: 'Excellence in Teaching Award',
-    organization: 'Department of Computer Science',
-    year: '2022',
-    description: 'Recognized for outstanding teaching and student mentorship in advanced machine learning courses.',
-    category: 'service',
-  },
-  {
-    title: 'Best Paper Award at NeurIPS Workshop',
-    organization: 'NeurIPS 2023 Workshop on Robust AI',
-    year: '2023',
-    description: 'Received the Best Paper Award for work on efficient transformer architectures.',
-    category: 'award',
-  },
-  {
-    title: 'Outstanding Reviewer Award',
-    organization: 'ICML 2023 Program Committee',
-    year: '2023',
-    description: 'Recognized for exceptional quality and timeliness of paper reviews.',
-    category: 'service',
-  },
-  {
-    title: 'Innovation Research Grant',
-    organization: 'Tech Industry Partnership',
-    year: '2023',
-    description: 'Major grant award for research on self-supervised learning in medical imaging.',
-    category: 'grant',
-  },
-  {
-    title: 'Early Career Research Excellence Award',
-    organization: 'International Association for AI Research',
+    title: 'Outstanding Graduate Thesis',
+    organization: 'Sichuan University',
     year: '2024',
-    description: 'Awarded to early-career researchers showing exceptional promise in AI research.',
+    description: 'Awarded for outstanding master\'s thesis in Electronic Science and Technology.',
     category: 'award',
   },
   {
-    title: 'Distinguished Service Award',
-    organization: 'ACM SIGAI',
-    year: '2023',
-    description: 'For dedicated service to the AI research community through conference organization and mentoring.',
-    category: 'service',
-  },
-  {
-    title: 'Most Cited Paper Award 2024',
-    organization: 'IEEE TPAMI',
+    title: 'Xiaomi Scholarship',
+    organization: 'Xiaomi Technology Co., Ltd.',
     year: '2024',
-    description: 'Our survey paper on deep learning for computer vision was among the most cited in the journal.',
+    description: 'Competitive scholarship for excellence in research and innovation.',
     category: 'award',
   },
   {
-    title: 'Travel Grant Award',
-    organization: 'Google Research',
-    year: '2022',
-    description: 'Travel grant to present research at CVPR 2022.',
-    category: 'grant',
-  },
-  {
-    title: 'Outstanding Student Paper Award',
-    organization: 'CVPR 2021',
-    year: '2021',
-    description: 'Awarded for exceptional quality student paper on novel neural network architectures.',
+    title: 'First Prize - ICDT HUAWEI Terminal New Display Technology Competition',
+    organization: 'ICDT and HUAWEI',
+    year: '2023',
+    description: 'First Prize in the Mobile Display Enhancement Track.',
     category: 'award',
   },
 ]
 
-const categoryColors = {
-  award: 'from-amber-400 to-orange-500',
-  fellowship: 'from-blue-400 to-cyan-500',
-  grant: 'from-emerald-400 to-teal-500',
-  service: 'from-purple-400 to-pink-500',
-}
-
-const categoryLabels = {
-  award: 'Award',
-  fellowship: 'Fellowship',
-  grant: 'Grant',
-  service: 'Service',
+const categoryConfig = {
+  award: {
+    label: 'Awards',
+    color: 'text-award-500',
+    bgGradient: 'from-award-400 to-award-500',
+    bgLight: 'bg-award-50 dark:bg-award-950/40',
+    textLight: 'text-award-600 dark:text-award-400',
+    borderLight: 'border-award-200 dark:border-award-800/30',
+  },
+  grant: {
+    label: 'Grants',
+    color: 'text-success-500',
+    bgGradient: 'from-success-400 to-success-500',
+    bgLight: 'bg-success-50 dark:bg-success-950/40',
+    textLight: 'text-success-600 dark:text-success-400',
+    borderLight: 'border-success-200 dark:border-success-800/30',
+  },
+  service: {
+    label: 'Service Awards',
+    color: 'text-accent-500',
+    bgGradient: 'from-accent-400 to-accent-500',
+    bgLight: 'bg-accent-50 dark:bg-accent-950/40',
+    textLight: 'text-accent-600 dark:text-accent-400',
+    borderLight: 'border-accent-200 dark:border-accent-800/30',
+  },
 }
 
 export default function HonorsPage() {
@@ -127,22 +91,22 @@ export default function HonorsPage() {
   }, {} as Record<string, Honor[]>)
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/30 to-white dark:from-slate-950 dark:via-indigo-950/30 dark:to-slate-950">
       {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50"
+        className="glass sticky top-0 z-50"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+            className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Home
           </Link>
-          <h1 className="text-xl font-bold text-gradient">All Honors & Awards</h1>
+          <h1 className="text-xl font-bold text-gradient-indigo">All Honors & Awards</h1>
         </div>
       </motion.header>
 
@@ -152,11 +116,11 @@ export default function HonorsPage() {
           animate={{ opacity: 1, y: 0 }}
           className="mb-12 text-center"
         >
-          <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-200 mb-4">
+          <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-display">
             Honors & Awards
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
-            Recognition for contributions to research, teaching, and service in the field of artificial intelligence.
+            Recognition for academic excellence, research achievements, and scholarly contributions.
           </p>
         </motion.div>
 
@@ -165,28 +129,22 @@ export default function HonorsPage() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12"
+          className="grid grid-cols-3 gap-4 mb-12 max-w-3xl mx-auto"
         >
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center shadow-lg">
-            <div className="text-3xl font-bold text-amber-500 mb-1">
+          <div className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-xl p-6 text-center shadow-card">
+            <div className="text-3xl font-bold text-award-500 mb-1">
               {allHonors.filter(h => h.category === 'award').length}
             </div>
             <div className="text-sm text-slate-600 dark:text-slate-400">Awards</div>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center shadow-lg">
-            <div className="text-3xl font-bold text-blue-500 mb-1">
-              {allHonors.filter(h => h.category === 'fellowship').length}
-            </div>
-            <div className="text-sm text-slate-600 dark:text-slate-400">Fellowships</div>
-          </div>
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center shadow-lg">
-            <div className="text-3xl font-bold text-emerald-500 mb-1">
+          <div className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-xl p-6 text-center shadow-card">
+            <div className="text-3xl font-bold text-success-500 mb-1">
               {allHonors.filter(h => h.category === 'grant').length}
             </div>
             <div className="text-sm text-slate-600 dark:text-slate-400">Grants</div>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-6 text-center shadow-lg">
-            <div className="text-3xl font-bold text-purple-500 mb-1">
+          <div className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-xl p-6 text-center shadow-card">
+            <div className="text-3xl font-bold text-accent-500 mb-1">
               {allHonors.filter(h => h.category === 'service').length}
             </div>
             <div className="text-sm text-slate-600 dark:text-slate-400">Service Awards</div>
@@ -205,49 +163,52 @@ export default function HonorsPage() {
                 transition={{ delay: yearIndex * 0.1 }}
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-accent-500 flex items-center justify-center">
+                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary-500 to-primary-600 flex items-center justify-center shadow-md">
                     <Calendar className="w-6 h-6 text-white" />
                   </div>
-                  <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200">{year}</h3>
+                  <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 font-display">{year}</h3>
                   <span className="px-3 py-1 bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 rounded-full text-sm font-medium">
                     {yearHonors.length} {yearHonors.length === 1 ? 'honor' : 'honors'}
                   </span>
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {yearHonors.map((honor, index) => (
-                    <motion.div
-                      key={index}
-                      initial={{ opacity: 0, scale: 0.95 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: yearIndex * 0.1 + index * 0.05 }}
-                      className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300"
-                    >
-                      <div className="flex items-start gap-4">
-                        <div className={`flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${categoryColors[honor.category || 'award']} flex items-center justify-center shadow-lg`}>
-                          <Award className="w-7 h-7 text-white" />
-                        </div>
-                        <div className="flex-1">
-                          <div className="flex items-center gap-2 mb-2">
-                            {honor.category && (
-                              <span className="px-2 py-0.5 bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-400 text-xs rounded-full">
-                                {categoryLabels[honor.category]}
+                  {yearHonors.map((honor, index) => {
+                    const config = categoryConfig[honor.category]
+                    return (
+                      <motion.div
+                        key={index}
+                        initial={{ opacity: 0, scale: 0.95 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ delay: yearIndex * 0.1 + index * 0.05 }}
+                        className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 shadow-card hover:shadow-card-lg transition-all duration-400 ease-premium"
+                      >
+                        <div className="flex items-start gap-4">
+                          <div className={`flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${config.bgGradient} flex items-center justify-center shadow-md`}>
+                            <Award className="w-7 h-7 text-white" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-2">
+                              <span className={`px-2 py-0.5 ${config.bgLight} ${config.textLight} text-xs font-semibold rounded-md border ${config.borderLight}`}>
+                                {config.label}
                               </span>
+                            </div>
+                            <h4 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">
+                              {honor.title}
+                            </h4>
+                            <p className="text-primary-600 dark:text-primary-400 font-medium text-sm mb-2">
+                              {honor.organization}
+                            </p>
+                            {honor.description && (
+                              <p className="text-slate-600 dark:text-slate-400 text-sm">
+                                {honor.description}
+                              </p>
                             )}
                           </div>
-                          <h4 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">
-                            {honor.title}
-                          </h4>
-                          <p className="text-primary-600 dark:text-primary-400 font-medium text-sm mb-2">
-                            {honor.organization}
-                          </p>
-                          <p className="text-slate-600 dark:text-slate-400 text-sm">
-                            {honor.description}
-                          </p>
                         </div>
-                      </div>
-                    </motion.div>
-                  ))}
+                      </motion.div>
+                    )
+                  })}
                 </div>
               </motion.section>
             ))}

@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { BookOpen, ArrowLeft, ExternalLink, Download, Code } from 'lucide-react'
+import { BookOpen, ArrowLeft, ExternalLink, Download, Code, Award } from 'lucide-react'
 import Link from 'next/link'
 import Image from 'next/image'
 
@@ -13,6 +13,7 @@ interface Publication {
   year: string
   type: 'journal' | 'conference'
   award?: string
+  impactFactor?: number
   image?: string
   abstract?: string
   links: {
@@ -24,83 +25,110 @@ interface Publication {
 
 const allPublications: Publication[] = [
   {
-    title: 'Advances in Deep Learning for Computer Vision: A Comprehensive Survey',
-    authors: 'Your Name, Coauthor One, Coauthor Two',
-    venue: 'IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)',
+    title: 'Real-world blind image super-resolution with mixed and probabilistic scheme based synthetic degradation pipeline',
+    authors: 'Xiao Liu, Xiaofeng Wang, Zhengyong Wang, Xiaohai He, Chao Ren',
+    venue: 'Knowledge-Based Systems (KBS)',
     year: '2024',
     type: 'journal',
-    award: 'Most Cited Paper 2024',
-    image: '/images/paper1.jpg',
-    abstract: 'This paper provides a comprehensive survey of recent advances in deep learning for computer vision, covering architectural innovations, training strategies, and applications across various domains.',
-    links: { pdf: '#', code: '#', project: '#' },
+    impactFactor: 7.6,
+    image: 'papers/KBS-2025-Xiao Liu.png',
+    abstract: 'This paper proposes a novel synthetic degradation pipeline for real-world blind image super-resolution, using mixed and probabilistic schemes to better model complex real-world degradations.',
+    links: { pdf: 'https://www.sciencedirect.com/science/article/abs/pii/S095070512501682X' },
   },
   {
-    title: 'Efficient Transformer Architectures for Long-Range Dependencies',
-    authors: 'Your Name, Coauthor One, Coauthor Two, Coauthor Three',
-    venue: 'Conference on Neural Information Processing Systems (NeurIPS)',
+    title: 'Transformer-Style Convolutional Network for Efficient Natural and Industrial Image Superresolution',
+    authors: 'Xiao Liu, Zhengyong Wang, Hong Yang, Xiaohai He, Haosong Gou, Chao Ren',
+    venue: 'IEEE Transactions on Industrial Informatics (TII)',
     year: '2024',
-    type: 'conference',
-    award: 'Best Paper Award',
-    image: '/images/paper2.jpg',
-    abstract: 'We propose novel transformer architectures that significantly reduce computational complexity while maintaining or improving performance on long-range dependency tasks.',
-    links: { pdf: '#', code: '#', project: '#' },
+    type: 'journal',
+    impactFactor: 9.9,
+    image: 'papers/TII-2025-Xiao Liu.jpg',
+    abstract: 'A transformer-style convolutional network that efficiently handles natural and industrial image super-resolution tasks with improved performance and reduced computational cost.',
+    links: { pdf: 'https://ieeexplore.ieee.org/abstract/document/10949639', code: 'https://github.com/liux520/TSCN' },
   },
   {
-    title: 'Self-Supervised Learning for Medical Image Analysis',
-    authors: 'Your Name, Coauthor One',
-    venue: 'Medical Image Computing and Computer Assisted Intervention (MICCAI)',
+    title: 'GBPG-Net: Global Background Prior-Guided Rain and Snow Image Restoration',
+    authors: 'Xiao Liu, Xiaofeng Wang, Shouyi Wang, Haosong Gou, Zhengyong Wang, Chao Ren',
+    venue: 'IEEE Transactions on Neural Networks and Learning Systems (TNNLS)',
     year: '2024',
-    type: 'conference',
-    image: '/images/paper3.jpg',
-    abstract: 'A self-supervised learning framework for medical image analysis that achieves state-of-the-art performance with limited labeled data.',
-    links: { pdf: '#', code: '#', project: '#' },
+    type: 'journal',
+    impactFactor: 8.9,
+    image: 'papers/TNNLS-2025-Xiao Liu.jpg',
+    abstract: 'Global Background Prior-Guided Network for effective rain and snow image restoration, leveraging global background priors to improve restoration quality.',
+    links: { pdf: 'https://ieeexplore.ieee.org/abstract/document/11048715', code: 'https://github.com/liux520/GBPG-Net' },
   },
   {
-    title: 'Robust Federated Learning with Privacy Preservation',
-    authors: 'Your Name, Coauthor One, Coauthor Two',
-    venue: 'International Conference on Machine Learning (ICML)',
+    title: 'DSRIR: Dynamic spatial refinement learning for progressive all-in-one image restoration',
+    authors: 'Xiaofeng Wang, Xiao Liu, Yutong Yang, Zhengyong Wang, Xiaohai He, Honggang Chen, Yi Li, Pingyu Wang',
+    venue: 'Information Processing & Management (IPM)',
+    year: '2024',
+    type: 'journal',
+    impactFactor: 6.9,
+    image: 'papers/KBS-2025-Xiao Liu.png',
+    abstract: 'Dynamic spatial refinement learning for progressive all-in-one image restoration, achieving state-of-the-art results on multiple restoration benchmarks.',
+    links: { pdf: 'https://www.sciencedirect.com/science/article/pii/S0306457325003218', code: 'https://github.com/xfwang23/DSRIR' },
+  },
+  {
+    title: 'Degradation modeling for restoration-enhanced object detection in adverse weather scenes',
+    authors: 'Xiaofeng Wang, Xiao Liu, Hong Yang, Zhengyong Wang, Xiaoyue Wen, Xiaohai He',
+    venue: 'IEEE Transactions on Intelligent Vehicles (TIV)',
+    year: '2024',
+    type: 'journal',
+    impactFactor: 14.3,
+    image: 'papers/KBS-2025-Xiao Liu.png',
+    abstract: 'Degradation modeling approach for restoration-enhanced object detection in adverse weather scenes, significantly improving detection performance under challenging conditions.',
+    links: { pdf: 'https://ieeexplore.ieee.org/document/10636782', code: 'https://github.com/xfwang23/RDMNet' },
+  },
+  {
+    title: 'Efficient Parallel Multi-Scale Detail and Semantic Encoding Network for Lightweight Semantic Segmentation',
+    authors: 'Xiao Liu, Xiuya Shi, Lufei Chen, Linbo Qing, Chao Ren',
+    venue: 'ACM International Conference on Multimedia (ACM MM)',
     year: '2023',
     type: 'conference',
-    image: '/images/paper4.jpg',
-    abstract: 'We propose a robust federated learning framework that preserves privacy while maintaining model performance in the presence of malicious clients.',
-    links: { pdf: '#', code: '#' },
+    image: 'papers/ACMMM-2023-Xiao Liu.jpg',
+    abstract: 'An efficient parallel multi-scale network for lightweight semantic segmentation, balancing accuracy and computational efficiency.',
+    links: { pdf: 'https://dl.acm.org/doi/abs/10.1145/3581783.3611848', code: 'https://github.com/liux520/PMSDSEN' },
   },
   {
-    title: 'Interpretable Attention Mechanisms for Visual Question Answering',
-    authors: 'Your Name, Coauthor One, Coauthor Two',
-    venue: 'IEEE Conference on Computer Vision and Pattern Recognition (CVPR)',
+    title: 'Efficient Information Modulation Network for Image Super-Resolution',
+    authors: 'Xiao Liu, Xiangyu Liao, Xiuya Shi, Linbo Qing, Chao Ren',
+    venue: 'European Conference on Artificial Intelligence (ECAI)',
     year: '2023',
     type: 'conference',
-    award: 'Best Paper Honorable Mention',
-    abstract: 'An interpretable attention mechanism for VQA that provides clear visual explanations of model decisions.',
-    links: { pdf: '#', code: '#', project: '#' },
+    image: 'papers/ECAI-2023-Xiao Liu.jpg',
+    abstract: 'Efficient Information Modulation Network for image super-resolution, achieving competitive results with reduced parameters.',
+    links: { pdf: 'https://ebooks.iospress.nl/doi/10.3233/FAIA230435', code: 'https://github.com/liux520/EIMN' },
   },
   {
-    title: 'Graph Neural Networks for Drug Discovery',
-    authors: 'Your Name, Coauthor One',
-    venue: 'Nature Machine Intelligence',
+    title: 'Random Sub-Samples Generation for Self-Supervised Real Image Denoising',
+    authors: 'Yizhong Pan, Xiao Liu, Xiangyu Liao, Yuanzhouhan Cao, Chao Ren',
+    venue: 'International Conference on Computer Vision (ICCV)',
+    year: '2023',
+    type: 'conference',
+    image: 'papers/ICCV-2023-Yizhong Pan.jpg',
+    abstract: 'Random sub-samples generation approach for self-supervised real image denoising, achieving state-of-the-art denoising performance.',
+    links: { pdf: 'https://openaccess.thecvf.com/content/ICCV2023/html/Pan_Random_Sub-Samples_Generation_for_Self-Supervised_Real_Image_Denoising_ICCV_2023_paper.html', project: 'https://github.com/p1y2z3/SDAP' },
+  },
+  {
+    title: 'CasaPuNet: Channel Affine Self-Attention- Based Progressively Updated Network for Real Image Denoising',
+    authors: 'Jie Huang, Xiao Liu, Yizhong Pan, Xiaohai He, Chao Ren',
+    venue: 'IEEE Transactions on Industrial Informatics (TII)',
     year: '2023',
     type: 'journal',
-    abstract: 'A novel GNN architecture for molecular property prediction that achieves state-of-the-art results on multiple benchmarks.',
-    links: { pdf: '#', code: '#' },
+    impactFactor: 9.9,
+    image: 'papers/TII-2022-Jie Huang.png',
+    abstract: 'Channel Affine Self-Attention-based progressively updated network for real image denoising with superior performance.',
+    links: { pdf: 'https://ieeexplore.ieee.org/document/9969152', code: 'https://github.com/chaoren88/CasaPuNet' },
   },
   {
-    title: 'Continual Learning without Forgetting',
-    authors: 'Your Name, Coauthor One, Coauthor Two',
-    venue: 'International Conference on Learning Representations (ICLR)',
-    year: '2022',
+    title: 'Unsupervised Image Denoising in Real-World Scenarios via Self-Collaboration Parallel Generative Adversarial Branches',
+    authors: 'Xin Lin, Chao Ren*, Xiao Liu, Jie Huang, Yinjie Lei',
+    venue: 'International Conference on Computer Vision (ICCV)',
+    year: '2023',
     type: 'conference',
-    abstract: 'A continual learning approach that mitigates catastrophic forgetting through experience replay and architecture design.',
-    links: { pdf: '#', code: '#' },
-  },
-  {
-    title: 'Multi-Modal Fusion for Emotion Recognition',
-    authors: 'Your Name, Coauthor One',
-    venue: 'ACM International Conference on Multimodal Interaction',
-    year: '2022',
-    type: 'conference',
-    abstract: 'A multi-modal fusion framework for emotion recognition that combines audio, video, and text features.',
-    links: { pdf: '#', code: '#' },
+    image: 'papers/ICCV-2023-Xin Lin.jpg',
+    abstract: 'Self-collaboration parallel generative adversarial branches for unsupervised real-world image denoising.',
+    links: { pdf: 'https://openaccess.thecvf.com/content/ICCV2023/html/Lin_Unsupervised_Image_Denoising_in_Real-World_Scenarios_via_Self-Collaboration_Parallel_Generative_ICCV_2023_paper.html', code: 'https://github.com/linxin0/SCPGabNet' },
   },
 ]
 
@@ -121,38 +149,38 @@ export default function PublicationsPage() {
   const conferenceCount = allPublications.filter(pub => pub.type === 'conference').length
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-slate-100 dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 via-indigo-50/30 to-white dark:from-slate-950 dark:via-indigo-950/30 dark:to-slate-950">
       {/* Header */}
       <motion.header
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-sm border-b border-slate-200 dark:border-slate-800 sticky top-0 z-50"
+        className="glass sticky top-0 z-50"
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors"
+            className="inline-flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-primary-500 dark:hover:text-primary-400 transition-colors"
           >
             <ArrowLeft className="w-5 h-5" />
             Back to Home
           </Link>
-          <h1 className="text-xl font-bold text-gradient">All Publications</h1>
+          <h1 className="text-xl font-bold text-gradient-indigo">All Publications</h1>
         </div>
       </motion.header>
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         {/* Page Title and Description */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           className="mb-12 text-center"
         >
-          <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-200 mb-4">
+          <h2 className="text-4xl font-bold text-slate-800 dark:text-slate-200 mb-4 font-display">
             Publications
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             A collection of my research work published in leading journals and conferences.
-            Topics include interpretable machine learning, computer vision, and neural network architectures.
+            Topics include Computer Vision, Image Restoration, and Super-Resolution.
           </p>
         </motion.div>
 
@@ -163,20 +191,20 @@ export default function PublicationsPage() {
           transition={{ delay: 0.2 }}
           className="grid grid-cols-3 gap-4 mb-8 max-w-2xl mx-auto"
         >
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-4 text-center shadow-lg">
+          <div className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-xl p-4 text-center shadow-card">
             <div className="text-2xl font-bold text-slate-800 dark:text-slate-200">
               {allPublications.length}
             </div>
             <div className="text-sm text-slate-600 dark:text-slate-400">Total</div>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-4 text-center shadow-lg">
-            <div className="text-2xl font-bold text-blue-500">
+          <div className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-xl p-4 text-center shadow-card">
+            <div className="text-2xl font-bold text-primary-500">
               {journalCount}
             </div>
             <div className="text-sm text-slate-600 dark:text-slate-400">Journals</div>
           </div>
-          <div className="bg-white dark:bg-slate-800 rounded-xl p-4 text-center shadow-lg">
-            <div className="text-2xl font-bold text-purple-500">
+          <div className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-xl p-4 text-center shadow-card">
+            <div className="text-2xl font-bold text-accent-500">
               {conferenceCount}
             </div>
             <div className="text-sm text-slate-600 dark:text-slate-400">Conferences</div>
@@ -194,7 +222,7 @@ export default function PublicationsPage() {
             <button
               key={filterType}
               onClick={() => setFilter(filterType)}
-              className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${
+              className={`px-6 py-2.5 rounded-full font-medium transition-all duration-400 ease-premium ${
                 filter === filterType
                   ? 'bg-gradient-to-r from-primary-500 to-accent-500 text-white shadow-lg'
                   : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700 shadow-md'
@@ -208,106 +236,134 @@ export default function PublicationsPage() {
         </motion.div>
 
         {/* Publications List */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={filter}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.3 }}
-            className="space-y-6"
-          >
-            {filteredPublications.map((pub, index) => (
-              <motion.article
-                key={index}
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 flex gap-6"
-              >
-                {/* Thumbnail */}
-                <div className="flex-shrink-0 w-32 h-44 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-700">
+        <AnimatePresence mode="popLayout">
+          {filteredPublications.map((pub, index) => (
+            <motion.article
+              key={index}
+              layout
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -20 }}
+              transition={{ duration: 0.3 }}
+              className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 shadow-card hover:shadow-card-lg transition-all duration-400 ease-premium group overflow-hidden mb-6"
+            >
+              <div className="flex gap-6">
+                {/* Paper Image - Left Side */}
+                <div className="flex-shrink-0 w-40 h-28 sm:w-48 sm:h-36 flex items-center justify-center">
                   {pub.image ? (
-                    <Image
-                      src={pub.image}
-                      alt={pub.title}
-                      width={128}
-                      height={176}
-                      className="w-full h-full object-cover"
-                    />
+                    <div className="relative w-full h-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-sm">
+                      <Image
+                        src={pub.image}
+                        alt={pub.title}
+                        fill
+                        className="object-contain"
+                        sizes="(max-width: 640px) 160px, 192px"
+                        unoptimized
+                      />
+                    </div>
                   ) : (
                     <DefaultPaperIcon />
                   )}
                 </div>
 
-                {/* Content */}
-                <div className="flex-1">
-                  {/* Type Badge */}
-                  <span className={`inline-block px-2 py-0.5 text-xs font-semibold rounded-full mb-3 ${
-                    pub.type === 'journal'
-                      ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
-                      : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400'
-                  }`}>
-                    {pub.type === 'journal' ? 'Journal' : 'Conference'}
-                  </span>
-
-                  {/* Award Badge */}
+                {/* Paper Info - Right Side */}
+                <div className="flex-1 min-w-0">
                   {pub.award && (
-                    <span className="inline-block px-2 py-0.5 bg-amber-100 dark:bg-amber-900/30 text-amber-700 dark:text-amber-400 text-xs font-semibold rounded-full mb-3 ml-2">
-                      {pub.award}
-                    </span>
+                    <div className="mb-3">
+                      <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gradient-to-r from-award-500 to-award-600 text-white text-xs font-semibold shadow-sm">
+                        <Award className="w-3 h-3" />
+                        {pub.award}
+                      </span>
+                    </div>
                   )}
 
-                  <h3 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">
+                  <h3 className="text-lg sm:text-xl font-bold text-slate-800 dark:text-slate-200 mb-2 group-hover:text-primary-500 transition-colors line-clamp-2">
                     {pub.title}
                   </h3>
-                  <p className="text-slate-600 dark:text-slate-400 mb-2">
-                    {pub.authors}
-                  </p>
-                  <p className="text-primary-600 dark:text-primary-400 font-medium mb-1">
-                    {pub.venue}
-                  </p>
-                  <p className="text-slate-500 dark:text-slate-500 text-sm mb-3">
-                    {pub.year}
-                  </p>
+
+                  <p
+                    className="text-sm text-slate-600 dark:text-slate-400 mb-2"
+                    dangerouslySetInnerHTML={{
+                      __html: pub.authors.replace(
+                        'Xiao Liu',
+                        '<strong class="text-slate-900 dark:text-slate-200 font-semibold">Xiao Liu</strong>'
+                      ),
+                    }}
+                  />
+
+                  <div className="flex items-center flex-wrap gap-x-3 gap-y-1 mb-3">
+                    <p className="text-sm text-primary-600 dark:text-primary-400 font-medium">
+                      {pub.venue} ({pub.year})
+                    </p>
+                    {/* Type Badge: Journal or Conference */}
+                    <span
+                      className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-semibold border ${
+                        pub.type === 'journal'
+                          ? 'bg-primary-50 dark:bg-primary-950/40 text-primary-600 dark:text-primary-400 border-primary-200 dark:border-primary-800/30'
+                          : 'bg-accent-50 dark:bg-accent-950/40 text-accent-600 dark:text-accent-400 border-accent-200 dark:border-accent-800/30'
+                      }`}
+                    >
+                      {pub.type === 'journal' ? (
+                        <>
+                          <span className="text-primary-400">📄</span>
+                          Journal
+                        </>
+                      ) : (
+                        <>
+                          <span className="text-accent-400">📋</span>
+                          Conference
+                        </>
+                      )}
+                    </span>
+                    {/* Impact Factor Badge */}
+                    {pub.impactFactor && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-award-50 dark:bg-award-950/40 text-award-600 dark:text-award-400 text-xs font-semibold border border-award-200 dark:border-award-800/30">
+                        <span className="text-award-400">★</span>
+                        IF {pub.impactFactor}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Abstract */}
                   {pub.abstract && (
-                    <p className="text-slate-600 dark:text-slate-400 text-sm mb-4 line-clamp-2">
+                    <p className="text-slate-600 dark:text-slate-400 text-sm mb-3 line-clamp-2">
                       {pub.abstract}
                     </p>
                   )}
+
                   <div className="flex flex-wrap gap-2">
                     {pub.links.pdf && (
                       <a
                         href={pub.links.pdf}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-primary-500 hover:text-white transition-all duration-300 text-xs font-medium"
                       >
-                        <Download className="w-4 h-4" />
+                        <Download className="w-3.5 h-3.5" />
                         PDF
                       </a>
                     )}
                     {pub.links.code && (
                       <a
                         href={pub.links.code}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 bg-slate-100 dark:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-lg text-sm font-medium hover:bg-slate-200 dark:hover:bg-slate-600 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-primary-500 hover:text-white transition-all duration-300 text-xs font-medium"
                       >
-                        <Code className="w-4 h-4" />
+                        <Code className="w-3.5 h-3.5" />
                         Code
                       </a>
                     )}
                     {pub.links.project && (
                       <a
                         href={pub.links.project}
-                        className="inline-flex items-center gap-1 px-3 py-1.5 bg-primary-100 dark:bg-primary-900/30 text-primary-700 dark:text-primary-400 rounded-lg text-sm font-medium hover:bg-primary-200 dark:hover:bg-primary-800/40 transition-colors"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300 hover:bg-primary-500 hover:text-white transition-all duration-300 text-xs font-medium"
                       >
-                        <ExternalLink className="w-4 h-4" />
+                        <ExternalLink className="w-3.5 h-3.5" />
                         Project
                       </a>
                     )}
                   </div>
                 </div>
-              </motion.article>
-            ))}
-          </motion.div>
+              </div>
+            </motion.article>
+          ))}
         </AnimatePresence>
       </main>
     </div>

@@ -33,8 +33,8 @@ const navItems = [
   { name: 'News', icon: Newspaper, href: '#news' },
   { name: 'Publications', icon: BookOpen, href: '#publications' },
   { name: 'Honors', icon: Award, href: '#honors' },
-  { name: 'Education', icon: GraduationCap, href: '#education' },
   { name: 'Communications', icon: Users, href: '#communications' },
+  { name: 'Education', icon: GraduationCap, href: '#education' },
 ]
 
 // Social media links configuration
@@ -91,6 +91,7 @@ interface Publication {
   year: string
   type: 'journal' | 'conference'
   award?: string
+  impactFactor?: number
   image?: string
   links: {
     pdf?: string
@@ -101,124 +102,203 @@ interface Publication {
 
 const publications: Publication[] = [
   {
-    title: 'Advances in Deep Learning for Computer Vision: A Comprehensive Survey',
-    authors: 'Your Name, Coauthor One, Coauthor Two',
-    venue: 'IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)',
+    title: 'Real-world blind image super-resolution with mixed and probabilistic scheme based synthetic degradation pipeline',
+    authors: 'Xiao Liu, Xiaofeng Wang, Zhengyong Wang, Xiaohai He, Chao Ren',
+    venue: 'Knowledge-Based Systems (KBS)',
     year: '2024',
     type: 'journal',
-    award: 'Most Cited Paper 2024',
-    image: '/images/paper1.jpg', // Add your paper thumbnail image
-    links: { pdf: '#', code: '#', project: '#' },
+    impactFactor: 7.6,
+    // award: 'most',
+    image: 'papers/KBS-2025-Xiao Liu.png',
+    links: { pdf: 'https://www.sciencedirect.com/science/article/abs/pii/S095070512501682X' },
   },
   {
-    title: 'Efficient Transformer Architectures for Long-Range Dependencies',
-    authors: 'Your Name, Coauthor One, Coauthor Two, Coauthor Three',
-    venue: 'Conference on Neural Information Processing Systems (NeurIPS)',
+    title: 'Transformer-Style Convolutional Network for Efficient Natural and Industrial Image Superresolution',
+    authors: 'Xiao Liu, Zhengyong Wang, Hong Yang, Xiaohai He, Haosong Gou, Chao Ren',
+    venue: 'IEEE Transactions on Industrial Informatics (TII)',
     year: '2024',
-    type: 'conference',
-    award: 'Best Paper Award',
-    image: '/images/paper2.jpg', // Add your paper thumbnail image
-    links: { pdf: '#', code: '#', project: '#' },
+    type: 'journal',
+    impactFactor: 9.9,
+    image: 'papers/TII-2025-Xiao Liu.jpg', // Add your paper thumbnail image
+    links: { pdf: 'https://ieeexplore.ieee.org/abstract/document/10949639', code: 'https://github.com/liux520/TSCN' },
   },
   {
-    title: 'Self-Supervised Learning for Medical Image Analysis',
-    authors: 'Your Name, Coauthor One',
-    venue: 'Medical Image Computing and Computer Assisted Intervention (MICCAI)',
+    title: 'GBPG-Net: Global Background Prior-Guided Rain and Snow Image Restoration',
+    authors: 'Xiao Liu, Xiaofeng Wang, Shouyi Wang, Haosong Gou, Zhengyong Wang, Chao Ren',
+    venue: 'IEEE Transactions on Neural Networks and Learning Systems (TNNLS)',
     year: '2024',
-    type: 'conference',
-    image: '/images/paper3.jpg', // Add your paper thumbnail image
-    links: { pdf: '#', code: '#', project: '#' },
+    type: 'journal',
+    impactFactor: 8.9,
+    image: 'papers/TNNLS-2025-Xiao Liu.jpg', // Add your paper thumbnail image
+    links: { pdf: 'https://ieeexplore.ieee.org/abstract/document/11048715', code: 'https://github.com/liux520/GBPG-Net' },
   },
   {
-    title: 'Robust Federated Learning with Privacy Preservation',
-    authors: 'Your Name, Coauthor One, Coauthor Two',
-    venue: 'International Conference on Machine Learning (ICML)',
+    title: 'DSRIR: Dynamic spatial refinement learning for progressive all-in-one image restoration',
+    authors: 'Xiaofeng Wang, Xiao Liu, Yutong Yang, Zhengyong Wang, Xiaohai He, Honggang Chen, Yi Li, Pingyu Wang',
+    venue: 'Information Processing & Management (IPM)',
+    year: '2024',
+    type: 'journal',
+    impactFactor: 6.9,
+    image: 'papers/paper1.jpg', // Add your paper thumbnail image
+    links: { pdf: 'https://www.sciencedirect.com/science/article/pii/S0306457325003218', code: 'https://github.com/xfwang23/DSRIR' },
+  },
+  {
+    title: 'Degradation modeling for restoration-enhanced object detection in adverse weather scenes',
+    authors: 'Xiaofeng Wang, Xiao Liu, Hong Yang, Zhengyong Wang, Xiaoyue Wen, Xiaohai He',
+    venue: 'IEEE Transactions on Intelligent Vehicles (TIV)',
+    year: '2024',
+    type: 'journal',
+    impactFactor: 14.3,
+    image: 'papers/paper1.jpg', // Add your paper thumbnail image
+    links: { pdf: 'https://ieeexplore.ieee.org/document/10636782', code: 'https://github.com/xfwang23/RDMNet' },
+  },
+  {
+    title: 'Efficient Parallel Multi-Scale Detail and Semantic Encoding Network for Lightweight Semantic Segmentation',
+    authors: 'Xiao Liu, Xiuya Shi, Lufei Chen, Linbo Qing, Chao Ren',
+    venue: 'IEEE Transactions on Pattern Analysis and Machine Intelligence (TPAMI)',
     year: '2023',
     type: 'conference',
-    image: '/images/paper4.jpg', // Add your paper thumbnail image
-    links: { pdf: '#', code: '#' },
+    image: 'papers/ACMMM-2023-Xiao Liu.jpg', // Add your paper thumbnail image
+    links: { pdf: 'https://dl.acm.org/doi/abs/10.1145/3581783.3611848', code: 'https://github.com/liux520/PMSDSEN' },
+  },
+  {
+    title: 'Efficient Information Modulation Network for Image Super-Resolution',
+    authors: 'Xiao Liu, Xiangyu Liao, Xiuya Shi, Linbo Qing, Chao Ren',
+    venue: 'European Conference on Artificial Intelligence (ECAI)',
+    year: '2023',
+    type: 'conference',
+    image: 'papers/ECAI-2023-Xiao Liu.jpg', // Add your paper thumbnail image
+    links: { pdf: 'https://ebooks.iospress.nl/doi/10.3233/FAIA230435', code: 'https://github.com/liux520/EIMN' },
+  },
+  {
+    title: 'Random Sub-Samples Generation for Self-Supervised Real Image Denoising',
+    authors: 'Yizhong Pan, Xiao Liu, Xiangyu Liao, Yuanzhouhan Cao, Chao Ren',
+    venue: 'International Conference on Computer Vision (ICCV)',
+    year: '2023',
+    type: 'conference',
+    image: 'papers/ICCV-2023-Yizhong Pan.jpg', // Add your paper thumbnail image
+    links: { pdf: 'https://openaccess.thecvf.com/content/ICCV2023/html/Pan_Random_Sub-Samples_Generation_for_Self-Supervised_Real_Image_Denoising_ICCV_2023_paper.html', code: '#', project: 'https://github.com/p1y2z3/SDAP' },
+  },
+  {
+    title: 'CasaPuNet: Channel Affine Self-Attention- Based Progressively Updated Network for Real Image Denoising',
+    authors: 'Jie Huang, Xiao Liu, Yizhong Pan, Xiaohai He, Chao Ren',
+    venue: 'IEEE Transactions on Industrial Informatics (TII)',
+    year: '2023',
+    type: 'journal',
+    impactFactor: 9.9,
+    image: 'papers/TII-2022-Jie Huang.png', // Add your paper thumbnail image
+    links: { pdf: 'https://ieeexplore.ieee.org/document/9969152', code: 'https://github.com/chaoren88/CasaPuNet' },
+  },
+  {
+    title: 'Unsupervised Image Denoising in Real-World Scenarios via Self-Collaboration Parallel Generative Adversarial Branches',
+    authors: 'Xin Lin, Chao Ren*, Xiao Liu, Jie Huang, Yinjie Lei',
+    venue: 'International Conference on Computer Vision (ICCV)',
+    year: '2023',
+    type: 'conference',
+    image: 'papers/ICCV-2023-Xin Lin.jpg', // Add your paper thumbnail image
+    links: { pdf: 'https://openaccess.thecvf.com/content/ICCV2023/html/Lin_Unsupervised_Image_Denoising_in_Real-World_Scenarios_via_Self-Collaboration_Parallel_Generative_ICCV_2023_paper.html', code: 'https://github.com/linxin0/SCPGabNet' },
   },
 ]
 
+// award | grant | service
 const honors = [
   {
-    title: 'Outstanding Researcher Award',
-    organization: 'National Science Foundation',
+    title: 'Yanbao Scholarship',
+    organization: 'Baofeng Group Co., Ltd.',
+    year: '2025',
+    category: 'award' as const,
+  },
+  {
+    title: 'Outstanding Graduate Student',
+    organization: 'Sichuan University',
     year: '2024',
-    description: 'Recognized for exceptional contributions to the field of machine learning.',
+    category: 'grant' as const,
   },
   {
-    title: 'Best PhD Thesis Award',
-    organization: 'University Academic Committee',
+    title: 'Outstanding Graduate Thesis',
+    organization: 'Sichuan University',
+    year: '2024',
+    description: 'Awarded for outstanding master\'s thesis in Electronic Science and Technology.',
+    category: 'service' as const,
+  },
+  {
+    title: 'Xiaomi Scholarship',
+    organization: 'Xiaomi Technology Co., Ltd.',
+    year: '2024',
+    category: 'award' as const,
+  },
+  {
+    title: 'First Prize in the ICDT HUAWEI Terminal New Display Technology Competition',
+    organization: 'ICDT and HUAWEI',
     year: '2023',
-    description: 'Awarded for doctoral dissertation on interpretable AI systems.',
-  },
-  {
-    title: 'Graduate Research Fellowship',
-    organization: 'Institute of Technology',
-    year: '2022',
-    description: 'Competitive fellowship supporting innovative research in AI.',
-  },
-  {
-    title: 'Excellence in Teaching Award',
-    organization: 'Department of Computer Science',
-    year: '2022',
-    description: 'Recognized for outstanding teaching and student mentorship.',
+    description: 'First Prize in the Mobile Display Enhancement Track.',
+    category: 'award' as const,
   },
 ]
 
 const education = [
   {
-    degree: 'Ph.D. in Computer Science',
-    institution: 'University of Technology',
-    location: 'City, Country',
-    period: '2020 - 2024',
-    advisor: 'Prof. Advisor Name',
-    thesis: 'Title of Doctoral Dissertation',
-    description: 'Research focused on interpretable machine learning and computer vision applications.',
+    degree: 'Ph.D. in Information and Communication Engineering',
+    institution: 'Sichuan of Technology',
+    location: 'Chengdu, China',
+    period: '2024 - 2028',
+    advisor: 'Prof. Chao Ren',
+    // thesis: 'Title of Doctoral Dissertation',
+    description: 'Research focused on Computer Vision, Image Super-Resolution, and Its Applications',
   },
   {
-    degree: 'M.S. in Computer Science',
-    institution: 'State University',
-    location: 'City, Country',
-    period: '2018 - 2020',
-    advisor: 'Prof. Advisor Name',
-    thesis: 'Master Thesis Title',
-    description: 'Specialized in deep learning and natural language processing.',
+    degree: 'M.S. in Electronic Science and Technology',
+    institution: 'Sichuan University',
+    location: 'Chengdu, China',
+    period: '2021 - 2024',
+    advisor: 'Prof. Zhengyong Wang and Prof. Chao Ren',
+    thesis: 'Research on Super-Resolution and Semantic Segmentation for Real-World Degraded Images',
+    description: 'Graduated with Outstanding Graduates and Outstanding Theses. Specialized in Computer Vision, Image Restoration, and Visual Understanding.',
   },
   {
-    degree: 'B.S. in Computer Science',
-    institution: 'National University',
-    location: 'City, Country',
-    period: '2014 - 2018',
-    description: 'Graduated with First Class Honors. Focus on algorithms and data structures.',
+    degree: 'B.S. in Electronic Science and Technology',
+    institution: 'Chengdu University of Information Technology',
+    location: 'Chengdu, China',
+    period: '2017 - 2021',
+    thesis: 'Study on the Magnetic Near-Neighbor Effect in Pt/YIG',
+    description: 'Graduated with Outstanding Graduate. Focus on First Principles and Spintronics. ',
   },
 ]
 
 const communications = [
   {
-    role: 'Program Committee Member',
-    venue: 'NeurIPS 2024, ICML 2024',
-    description: 'Reviewed submissions for top-tier machine learning conferences.',
+    role: 'Conference Reviewer',
+    venue: 'CVPR, ACMMM, PRCV',
+    description: 'Reviewed submissions for top-tier deep learning journals and conferences.',
   },
   {
-    role: 'Guest Editor',
-    venue: 'Special Issue on Interpretable AI',
-    journal: 'Journal of Machine Learning Research',
-    description: 'Organizing special issue on interpretability in machine learning.',
+    role: 'Journal Reviewer',
+    venue: 'Scientific Reports, Neurcomputing, Visual Intelligence, Scientific Reports, Neurcomputing, Visual Intelligence, Scientific Reports, Neurcomputing, Visual Intelligence',
+    description: 'Reviewed submissions for top-tier deep learning journals and conferences.',
   },
-  {
-    role: 'Invited Speaker',
-    venue: 'AI Research Seminar Series',
-    institution: 'Multiple Institutions',
-    description: 'Delivered talks at various universities and research labs.',
-  },
-  {
-    role: 'Conference Co-organizer',
-    venue: 'Workshop on Robust AI',
-    conference: 'NeurIPS 2023',
-    description: 'Co-organized workshop focusing on robustness in AI systems.',
-  },
+  // {
+  //   role: 'Program Committee Member',
+  //   venue: 'NeurIPS 2024, ICML 2024',
+  //   description: 'Reviewed submissions for top-tier machine learning conferences.',
+  // },
+  // {
+  //   role: 'Guest Editor',
+  //   venue: 'Special Issue on Interpretable AI',
+  //   journal: 'Journal of Machine Learning Research',
+  //   description: 'Organizing special issue on interpretability in machine learning.',
+  // },
+  // {
+  //   role: 'Invited Speaker',
+  //   venue: 'AI Research Seminar Series',
+  //   institution: 'Multiple Institutions',
+  //   description: 'Delivered talks at various universities and research labs.',
+  // },
+  // {
+  //   role: 'Conference Co-organizer',
+  //   venue: 'Workshop on Robust AI',
+  //   conference: 'NeurIPS 2023',
+  //   description: 'Co-organized workshop focusing on robustness in AI systems.',
+  // },
 ]
 
 // Skills - Temporarily Commented Out
@@ -478,8 +558,15 @@ function Hero() {
               <div className="w-full h-full rounded-full bg-gradient-to-r from-primary-400 via-accent-400 to-primary-500" />
             </motion.div>
 
-            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center shadow-xl">
-              <User className="w-16 h-16 sm:w-20 sm:h-20 text-slate-600 dark:text-slate-300" />
+            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-slate-100 to-slate-200 dark:from-slate-700 dark:to-slate-800 flex items-center justify-center shadow-xl overflow-hidden">
+               {/*<User className="w-16 h-16 sm:w-20 sm:h-20 text-slate-600 dark:text-slate-300" /> */}
+               <Image
+                  src="/images/my-66.png"
+                  alt="Xiao Liu"
+                  fill
+                  className="object-cover"
+                  priority
+               />
             </div>
           </motion.div>
 
@@ -490,7 +577,7 @@ function Hero() {
             transition={{ delay: 0.4, duration: 0.6 }}
             className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-4 tracking-tight"
           >
-            <span className="text-white drop-shadow-lg">Dr. Your Name</span>
+            <span className="text-white drop-shadow-lg">Xiao Liu</span>
           </motion.h1>
 
           {/* Title */}
@@ -500,9 +587,7 @@ function Hero() {
             transition={{ delay: 0.5, duration: 0.6 }}
             className="text-base sm:text-lg text-slate-200 mb-2 tracking-wide font-medium"
           >
-            Assistant Professor
-            <span className="mx-2 text-slate-500">•</span>
-            Machine Learning Researcher
+            Computer Vision Learner and Researcher
           </motion.p>
 
           {/* Institution */}
@@ -512,9 +597,11 @@ function Hero() {
             transition={{ delay: 0.55, duration: 0.6 }}
             className="text-sm sm:text-base text-slate-300 mb-8 tracking-wide"
           >
-            Department of Computer Science
+            College of Electronics and Information Engineering
             <span className="mx-2 text-slate-500">|</span>
-            University of Technology
+            Sichuan University
+            <span className="mx-2 text-slate-500">|</span>
+            PhD
           </motion.p>
 
           {/* CTA Buttons */}
@@ -921,7 +1008,7 @@ function Publications() {
           </div>
 
           <div className="space-y-6">
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="popLayout">
               {filteredPublications.map((pub, index) => (
                 <motion.div
                   key={index}
@@ -934,16 +1021,18 @@ function Publications() {
                 >
                   <div className="flex gap-6">
                     {/* Paper Image - Left Side */}
-                    <div className="flex-shrink-0 w-32 h-32 sm:w-40 sm:h-40">
+                    <div className="flex-shrink-0 w-40 h-28 sm:w-48 sm:h-36 flex items-center justify-center">
                       {pub.image ? (
-                        <Image
-                          src={pub.image}
-                          alt={pub.title}
-                          width={160}
-                          height={160}
-                          className="w-full h-full object-cover rounded-xl"
-                          unoptimized
-                        />
+                        <div className="relative w-full h-full rounded-xl overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-sm">
+                          <Image
+                            src={pub.image}
+                            alt={pub.title}
+                            fill
+                            className="object-contain"
+                            sizes="(max-width: 640px) 160px, 192px"
+                            unoptimized
+                          />
+                        </div>
                       ) : (
                         <DefaultPaperIcon />
                       )}
@@ -964,13 +1053,48 @@ function Publications() {
                         {pub.title}
                       </h3>
 
-                      <p className="text-sm text-slate-600 dark:text-slate-400 mb-2">
-                        {pub.authors}
-                      </p>
+                      <p
+                        className="text-sm text-slate-600 dark:text-slate-400 mb-2"
+                        dangerouslySetInnerHTML={{
+                          __html: pub.authors.replace(
+                            'Xiao Liu',
+                            '<strong class="text-slate-900 dark:text-slate-200 font-semibold">Xiao Liu</strong>'
+                          ),
+                        }}
+                      />
 
-                      <p className="text-sm text-primary-600 dark:text-primary-400 font-medium mb-3">
-                        {pub.venue} ({pub.year})
-                      </p>
+                      <div className="flex items-center flex-wrap gap-x-3 gap-y-1 mb-3">
+                        <p className="text-sm text-primary-600 dark:text-primary-400 font-medium">
+                          {pub.venue} ({pub.year})
+                        </p>
+                        {/* Type Badge: Journal or Conference */}
+                        <span
+                          className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-xs font-semibold border ${
+                            pub.type === 'journal'
+                              ? 'bg-primary-50 dark:bg-primary-950/40 text-primary-600 dark:text-primary-400 border-primary-200 dark:border-primary-800/30'
+                              : 'bg-accent-50 dark:bg-accent-950/40 text-accent-600 dark:text-accent-400 border-accent-200 dark:border-accent-800/30'
+                          }`}
+                        >
+                          {pub.type === 'journal' ? (
+                            <>
+                              <span className="text-primary-400">📄</span>
+                              Journal
+                            </>
+                          ) : (
+                            <>
+                              <span className="text-accent-400">📋</span>
+                              Conference
+                            </>
+                          )}
+                        </span>
+                        {/* Impact Factor Badge */}
+                        {pub.impactFactor && (
+                          <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md bg-award-50 dark:bg-award-950/40 text-award-600 dark:text-award-400 text-xs font-semibold border border-award-200 dark:border-award-800/30">
+                            <span className="text-award-400">★</span>
+                            IF {pub.impactFactor}
+                          </span>
+                        )}
+                      </div>
 
                       <div className="flex flex-wrap gap-2">
                         {pub.links.pdf && (
@@ -1030,6 +1154,30 @@ function Publications() {
 }
 
 function Honors() {
+  const categoryConfig = {
+    award: {
+      label: 'Award',
+      bgGradient: 'from-award-400 to-award-500',
+      bgLight: 'bg-award-50 dark:bg-award-950/40',
+      textLight: 'text-award-600 dark:text-award-400',
+      borderLight: 'border-award-200 dark:border-award-800/30',
+    },
+    grant: {
+      label: 'Grant',
+      bgGradient: 'from-success-400 to-success-500',
+      bgLight: 'bg-success-50 dark:bg-success-950/40',
+      textLight: 'text-success-600 dark:text-success-400',
+      borderLight: 'border-success-200 dark:border-success-800/30',
+    },
+    service: {
+      label: 'Service',
+      bgGradient: 'from-accent-400 to-accent-500',
+      bgLight: 'bg-accent-50 dark:bg-accent-950/40',
+      textLight: 'text-accent-600 dark:text-accent-400',
+      borderLight: 'border-accent-200 dark:border-accent-800/30',
+    },
+  }
+
   return (
     <section id="honors" className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-transparent to-accent-50/30 dark:to-slate-900/30">
       <div className="max-w-5xl mx-auto">
@@ -1047,37 +1195,47 @@ function Honors() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {honors.map((honor, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 shadow-card hover:shadow-card-lg transition-all duration-400 ease-premium"
-              >
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br from-award-400 to-award-500 flex items-center justify-center shadow-md">
-                    <Award className="w-7 h-7 text-white" />
+            {honors.map((honor, index) => {
+              const config = categoryConfig[honor.category || 'award']
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className="bg-white/90 dark:bg-slate-800/80 backdrop-blur-md rounded-2xl p-6 shadow-card hover:shadow-card-lg transition-all duration-400 ease-premium"
+                >
+                  <div className="flex items-start gap-4">
+                    <div className={`flex-shrink-0 w-14 h-14 rounded-xl bg-gradient-to-br ${config.bgGradient} flex items-center justify-center shadow-md`}>
+                      <Award className="w-7 h-7 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className={`px-2 py-0.5 ${config.bgLight} ${config.textLight} text-xs font-semibold rounded-md border ${config.borderLight}`}>
+                          {config.label}
+                        </span>
+                      </div>
+                      <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">
+                        {honor.title}
+                      </h3>
+                      <p className="text-primary-600 dark:text-primary-400 font-medium text-sm mb-2">
+                        {honor.organization}
+                      </p>
+                      <p className="text-slate-500 dark:text-slate-500 text-sm flex items-center gap-2 mb-2">
+                        <Calendar className="w-4 h-4" />
+                        {honor.year}
+                      </p>
+                      {honor.description && (
+                        <p className="text-slate-600 dark:text-slate-400 text-sm">
+                          {honor.description}
+                        </p>
+                      )}
+                    </div>
                   </div>
-                  <div className="flex-1">
-                    <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">
-                      {honor.title}
-                    </h3>
-                    <p className="text-primary-600 dark:text-primary-400 font-medium text-sm mb-2">
-                      {honor.organization}
-                    </p>
-                    <p className="text-slate-500 dark:text-slate-500 text-sm mb-3 flex items-center gap-2">
-                      <Calendar className="w-4 h-4" />
-                      {honor.year}
-                    </p>
-                    <p className="text-slate-600 dark:text-slate-400 text-sm">
-                      {honor.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                </motion.div>
+              )
+            })}
           </div>
 
           <motion.div
@@ -1160,6 +1318,7 @@ function Education() {
                       </p>
                     )}
 
+                    {/* Thesis field - uncomment when needed */}
                     {edu.thesis && (
                       <p className="text-slate-600 dark:text-slate-400 text-sm mb-3">
                         <span className="font-medium">Thesis:</span> {edu.thesis}
@@ -1215,29 +1374,14 @@ function Communications() {
                     <h3 className="text-lg font-bold text-slate-800 dark:text-slate-200 mb-1">
                       {comm.role}
                     </h3>
-                    {comm.venue && (
-                      <p className="text-primary-600 dark:text-primary-400 font-medium mb-1">
-                        {comm.venue}
-                      </p>
-                    )}
-                    {comm.journal && (
-                      <p className="text-slate-500 dark:text-slate-500 text-sm mb-1">
-                        {comm.journal}
-                      </p>
-                    )}
-                    {comm.institution && (
-                      <p className="text-slate-500 dark:text-slate-500 text-sm mb-1">
-                        {comm.institution}
-                      </p>
-                    )}
-                    {comm.conference && (
-                      <p className="text-slate-500 dark:text-slate-500 text-sm mb-1">
-                        {comm.conference}
-                      </p>
-                    )}
-                    <p className="text-slate-600 dark:text-slate-400 text-sm mt-2">
-                      {comm.description}
+                    <p className="text-primary-600 dark:text-primary-400 font-medium text-sm mb-1">
+                      {comm.venue}
                     </p>
+                    {comm.description && (
+                      <p className="text-slate-600 dark:text-slate-400 text-sm">
+                        {comm.description}
+                      </p>
+                    )}
                   </div>
                 </div>
               </motion.div>
@@ -1271,13 +1415,13 @@ function Footer() {
       <div className="max-w-5xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="text-center md:text-left">
-            <h3 className="text-2xl font-bold text-white mb-2">Dr. Your Name</h3>
+            <h3 className="text-2xl font-bold text-white mb-2">Xiao Liu</h3>
             <p className="text-slate-400">
-              Assistant Professor, Department of Computer Science
+              PhD, Sichuan University
             </p>
-            <p className="text-slate-400">
-              University of Technology
-            </p>
+            {/*<p className="text-slate-400">*/}
+            {/*  University of Technology*/}
+            {/*</p>*/}
           </div>
 
           <div className="flex items-center gap-4">
@@ -1296,7 +1440,7 @@ function Footer() {
         </div>
 
         <div className="mt-8 pt-8 border-t border-slate-800 text-center text-slate-500 text-sm">
-          <p>&copy; {new Date().getFullYear()} Dr. Your Name. All rights reserved.</p>
+          <p>&copy; {new Date().getFullYear()} Xiao Liu. All rights reserved.</p>
           <p className="mt-2">Built with Next.js, Tailwind CSS, and Framer Motion</p>
         </div>
       </div>
